@@ -1,3 +1,5 @@
+import Footer from '../_layout/footer'
+
 export default function Layout({
     children, // will be a page or nested layout
   }: {
@@ -10,9 +12,7 @@ export default function Layout({
         <div  className="container m-auto">
         {children}
         </div>
-        <footer className="bg-stone-950 w-full h-20 mt-20">
-
-        </footer>
+        <Footer></Footer>
       </section>
     )
   }
