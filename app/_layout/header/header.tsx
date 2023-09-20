@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-export default function header() {
+export default function Header() {
   return (
     <>
       <nav className=" bg-stone-950 w-full h-20">

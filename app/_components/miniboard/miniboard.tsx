@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react'
 
-export class miniboard extends Component {
+export class Miniboard extends Component {
   render() {
     return (
     
