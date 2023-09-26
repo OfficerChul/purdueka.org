@@ -7,7 +7,7 @@ export default function Layout({
       <section>
         <nav className="bg-stone-950 w-full h-20">
         </nav>
-        <div  className="container m-auto min-h-screen">
+        <div  className="container m-auto">
         {children}
         </div>
       </section>
