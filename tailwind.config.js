@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gold: '#CEB888'
+        "boilermaker-gold": '#cfb991'
       }
     },
   },

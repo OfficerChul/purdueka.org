@@ -9,8 +9,8 @@ export default  function Page({ params }: { params: { id: string } }) {
             </div>
             <div className="p-2 mt-14">
                 <div className="flex flex-col lg:flex-row justify-between">
-                    <h1 className="text-4xl text-gold">2023년 기묘한 밤 이벤트 정보 안내 공고</h1>
-                    <div className="flex items-end text-gold">
+                    <h1 className="text-4xl text-boilermaker-gold">2023년 기묘한 밤 이벤트 정보 안내 공고</h1>
+                    <div className="flex items-end text-boilermaker-gold">
                         <div className="pe-2"><span className="text-yellow-600">작성자</span> PKA</div>
                         <div className="px-2"><span className="text-yellow-600">조회수</span> 30</div>
                         <div className="px-2"><span className="text-yellow-600">댓글</span> 2</div>
