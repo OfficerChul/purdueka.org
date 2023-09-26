@@ -13,15 +13,15 @@ export default function Miniboard() {
         </div>
         <div className="flex justify-between">
           <span>[Hwanwha 2-23 Hanhwa Travel Award 모집공고</span>
-          <span className='text-stone-400'>2023.09.04</span>
+          <span className='text-stone-400 text-xs'>2023.09.04</span>
         </div>
         <div className="flex justify-between">
           <span>[Hwanwha 2-23 Hanhwa Travel Award 모집공고</span>
-          <span className='text-stone-400'>1시간 전</span>
+          <span className='text-stone-400 text-xs'>1시간 전</span>
         </div>
         <div className="flex justify-between">
           <span>[Hwanwha 2-23 Hanhwa Travel Award 모집공고</span>
-          <span className='text-stone-400'>1시간 전</span>
+          <span className='text-stone-400 text-xs'>1시간 전</span>
         </div>
             
           
