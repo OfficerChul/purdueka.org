@@ -12,7 +12,6 @@ export default function Layout({
         <div  className="container m-auto min-h-screen">
         {children}
         </div>
-        <Footer></Footer>
       </section>
     )
   }
