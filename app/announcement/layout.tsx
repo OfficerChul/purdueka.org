@@ -1,5 +1,3 @@
-import Footer from '../_layout/footer'
-
 export default function Layout({
     children, // will be a page or nested layout
   }: {
