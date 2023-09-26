@@ -4,7 +4,7 @@ import { BoardDataInterface } from '../../_interfaces/BoardDataInterface'
 
 export default function Board(props: { category: string, data: Array<BoardDataInterface> }) {
     return (
-        <div className='max-w-5xl mx-auto'>
+        <div>
         <div className="flex justify-between mt-10">
           <div className='text-yellow-600 text-2xl'>{props.category}</div>
           <div>
@@ -14,7 +14,7 @@ export default function Board(props: { category: string, data: Array<BoardDataIn
         </div>
         <div className="mt-4 flex justify-end">
           <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
-            검색하기
+            글쓰기
           </button>
         </div>
         <div className='mt-4 border border-x-white border-y-yellow-600 border-y-4'>
