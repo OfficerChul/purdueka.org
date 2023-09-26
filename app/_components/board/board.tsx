@@ -4,7 +4,7 @@ import { BoardDataInterface } from '../../_interfaces/BoardDataInterface'
 
 export default function Board(props: { category: string, data: Array<BoardDataInterface> }) {
     return (
-        <div>
+        <div className='max-w-5xl mx-auto'>
         <div className="flex justify-between mt-10">
           <div className='text-yellow-600 text-2xl'>{props.category}</div>
           <div>
