@@ -17,7 +17,7 @@ export default function Header() {
       <div className={`mobile-menu ${isMenuOpen ? '' : 'hidden'} bg-yellow-600 fixed h-full right-0`}>
         <div className="bg-[#CEB888] h-full mt-1 mb-1">
           <button className='' onClick={toggleMenu}>{x_btn}</button>
-
+          {/* mobile screen */}
           <ul className="text-yellow-600 py-2 px-2 md:hidden mobile-menu pr-24">
             <li><a href='/intro' className={`${underlineEffect} text-2xl`}>소개</a></li>
             <li><a href='/info' className={`${underlineEffect} text-2xl`}>퍼듀 정보</a></li>
@@ -39,7 +39,7 @@ export default function Header() {
 
 
           <div className="grow"></div>
-          <ul className="text-yellow-600 md:flex gap-10 hidden whitespace-nowrap">
+          <ul className="text-yellow-600 md:flex lg:gap-10 md:gap-5 md:mr-3 hidden whitespace-nowrap">
 
             <li><a href='/intro' className={`${underlineEffect}`}>소개</a></li>
             <li><a href='/info' className={`${underlineEffect}`}>퍼듀 정보</a></li>
