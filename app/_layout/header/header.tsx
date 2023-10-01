@@ -18,25 +18,16 @@ export default function Header() {
 
       <div className={`py-2 transition-all duration-300 ease-in ${isMenuOpen ? "" : 'right-[-100%]'} bg-yellow-600 fixed h-full right-0 w-9/12`}>
 
-        <div className="bg-boilermaker-gold h-full p-5">
-
+        <div className="bg-[#CEB888] h-full p-5">
+          
           {/* mobile screen */}
-          <ul className="text-stone-950 flex gap-4 flex-col">
-            <div className="text-stone-950 text-3xl">Menu</div>
-            <div className="absolute right-5 flex gap-1">
-              <button className={`transition-all duration-300 ease-in text-stone-950 md:hidden`}>
-                {searchIcon}
-              </button>
-              <button onClick={toggleMenu} className={`transition-all duration-300 ease-in ${isMenuOpen ? "" : "hidden"} text-stone-950 md:hidden`}>
-                {close}
-              </button>
-            </div>
-            <hr className="border-t border-stone-950"/>
-            <li><Link href='/intro' className={`${underlineEffect} text-2xl`}>소개</Link></li>
-            <li><Link href='/info' className={`${underlineEffect} text-2xl`}>퍼듀 정보</Link></li>
-            <li><Link href='/hire-announcement' className={`${underlineEffect} text-2xl`}>채용 공고</Link></li>
-            <li><Link href='/contact' className={`${underlineEffect} text-2xl`}>Contact Us</Link></li>
-            <li><Link href='/search' className={`${underlineEffect} text-2xl`}>사고/팔고</Link></li>
+          <ul className="text-yellow-600">
+            <li><a href='/intro' className={`${underlineEffect} text-2xl`}>소개</a></li>
+            <li><a href='/info' className={`${underlineEffect} text-2xl`}>퍼듀 정보</a></li>
+            <li><a href='/ann' className={`${underlineEffect} text-2xl`}>채용 공고</a></li>
+            <li><a href='/contact' className={`${underlineEffect} text-2xl`}>Contact Us</a></li>
+            <li><a href='/search' className={`${underlineEffect} text-2xl`}>검색</a></li>
+            <li><a href='/login' className={`${underlineEffect} text-2xl`}>로그인</a></li>
 
           </ul>
           <div className="absolute right-0 bottom-2 flex gap-3 text-white p-3">
@@ -49,10 +40,12 @@ export default function Header() {
       <nav className=" bg-white sm:bg-stone-950 w-full h-20">
         <div className="items-center m-auto container flex justify-between truncate">
 
-          <button onClick={toggleMenu} className={`${isMenuOpen ? "hidden" : ""} text-stone-950 md:hidden absolute right-5`}>
+          <button onClick={toggleMenu} className={`${isMenuOpen ? "hidden" : ""} text-yellow-600 md:hidden absolute right-5`}>
             {hamburger}
           </button>
-
+          <button onClick={toggleMenu} className={`${isMenuOpen ? "" : "hidden"} text-yellow-600 md:hidden absolute right-5`}>
+            {close}
+          </button>
 
 
           <Link href='/' ><Image className='h-20 m-auto' src='/pka_logo.png' alt='logo' width='317' height='96'></Image></Link>
@@ -82,6 +75,9 @@ export default function Header() {
 
       {/* banner start */}
 
+      <div className="h-[36vw] truncate">
+        <Image alt='banner' src='/banner.jpeg' className='w-full' width='1280' height='1280'></Image>
+      </div>
     </>
   )
 }
@@ -90,10 +86,13 @@ const hamburger = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
 </svg>
 
+const close = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+</svg>
+
 const x_btn = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
 </svg>
-
 
 const underlineEffect = "relative w-fit after:block after:content-[''] after:absolute after:h-[1px] after:bg-yellow-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
 
