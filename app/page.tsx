@@ -5,17 +5,16 @@ import { data } from './_shared/tests/test_data'
 export default function Home() {
   return (
     <>
-      <div className="m-auto container mt-2">
-    
-        <div className=" justify-center grid grid-cols-1 mx-2 md:m-auto md:grid-cols-5 gap-1 truncate">
-          
+      <div className="flex justify-center">
+        <div className="justify-center grid grid-cols-1 mx-1 md:m-auto md:grid-cols-5 gap-1 truncate">
+          {/* mobile */}
           <div className="grid grid-cols-2 gap-1 md:hidden">
             <h1 className="bg-yellow-600">THREE<Image alt='google' width='300' height='96' src='/google_logo.png'></Image></h1>
             <h1 className="bg-purple-600">EIGHT<Image alt='qrcode' width='300' height='96' src='/qrcode.png'></Image></h1>
           </div>
           
-          
-          <div className="bg-teal-500 md:col-span-2">
+          {/* table + large screen */}
+          <div className="bg-teal-500 md:col-span-2 md:w-[500px]">
             <h1 className="  ">
               {/* here */}
               <Miniboard category='announcement' data={data} />
@@ -50,8 +49,10 @@ export default function Home() {
               {/* here */}
             </h1>
           </div>
-
-          <div className="  bg-teal-500 md:col-span-4 sm:col-span-1">  {/*mobile*/}
+          {/* <div className="  bg-emerald-500">
+            <h1 className="  ">SIX</h1>
+          </div> */}
+          <div className="  bg-teal-500 md:col-span-4 sm:col-span-1">
             <h1 className="  ">
               <Miniboard category='Gallery' data={data} />
             </h1>
