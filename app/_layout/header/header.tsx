@@ -52,7 +52,12 @@ export default function Header() {
             {hamburger}
           </button>
 
-
+          <button onClick={toggleMenu} className={`${isMenuOpen ? "hidden" : ""} text-yellow-600 md:hidden absolute right-5`}>
+            {hamburger}
+          </button>
+          <button onClick={toggleMenu} className={`${isMenuOpen ? "" : "hidden"} text-yellow-600 md:hidden absolute right-5`}>
+            {close}
+          </button>
 
           <Image className='h-20 m-auto' src='/pka_logo.png' alt='logo' width='317' height='96'></Image>
 
@@ -88,11 +93,11 @@ export default function Header() {
   )
 }
 
-const hamburger = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8">
+const hamburger = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
 </svg>
 
-const close = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8">
+const close = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
 </svg>
 
