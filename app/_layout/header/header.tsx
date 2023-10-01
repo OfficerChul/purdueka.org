@@ -31,7 +31,7 @@ export default function Header() {
 
       </div>
       <nav className=" bg-stone-950 w-full h-20">
-        <div className="items-center m-auto container flex justify-between">
+        <div className="items-center m-auto container flex justify-between whitespace-nowrap">
 
 
 
