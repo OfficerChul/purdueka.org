@@ -14,7 +14,7 @@ export default function Home() {
           </div>
           
           {/* table + large screen */}
-          <div className="bg-teal-500 md:col-span-2 md:w-[500px]">
+          <div className="bg-teal-500 md:col-span-2">
             <h1 className="  ">
               {/* here */}
               <Miniboard category='announcement' data={data} />
