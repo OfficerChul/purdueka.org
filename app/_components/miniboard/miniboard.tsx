@@ -2,28 +2,28 @@
 "use client" 
 
 import React from 'react'
+import { BoardDataInterface } from '../../_interfaces/BoardDataInterface'
 
-export default function Miniboard() {
+export default function Miniboard(props: { category: string, data: Array<BoardDataInterface> }) {
+  const OnPostClick = (event: any, id: any) => {
+    window.open("/announcement/"+id, '_blank')?.focus()
+  }
+
   return (
     <div className="flex justify-center bg-yellow-600 h-72">
       <div className="flex overflow-hidden flex-col text-black border-8 border-white w-full mt-1 mb-1 bg-white">
         <div className="flex justify-between mb-4">
-          <span className="text-xl">공지사항</span>
+          <span className="text-xl">{props.category}</span>
           <a className='text-xs' href='/'>더보기</a>
         </div>
-        <div className="flex justify-between">
-          <span>[Hwanwha 2-23 Hanhwa Travel Award 모집공고</span>
-          <span className='text-stone-400 text-xs'>2023.09.04</span>
-        </div>
-        <div className="flex justify-between">
-          <span>[Hwanwha 2-23 Hanhwa Travel Award 모집공고</span>
-          <span className='text-stone-400 text-xs'>1시간 전</span>
-        </div>
-        <div className="flex justify-between">
-          <span>[Hwanwha 2-23 Hanhwa Travel Award 모집공고</span>
-          <span className='text-stone-400 text-xs'>1시간 전</span>
-        </div>
-            
+        {
+          props.data.map( 
+            e => <div key={e.id} className='flex justify-between cursor-pointer hover:text-stone-400' onClick={event => OnPostClick(event, e.id)}>
+              <span>{e.title}</span>
+              <span className='text-stone-400 text-xs'>{e.date}</span>
+            </div>
+          )
+        }   
           
       </div>
     </div>

@@ -1,6 +1,6 @@
 import Miniboard from './_components/miniboard/miniboard'
 import Image from 'next/image'
-
+import { data } from './_shared/test_data'
 
 export default function Home() {
   return (
@@ -15,14 +15,14 @@ export default function Home() {
           <div className="bg-teal-500">
             <h1 className="  ">
               {/* here */}
-              <Miniboard />
+              <Miniboard category='공지사항' data={data} />
               {/* here */}
             </h1>
           </div>
           <div className="  bg-amber-500">
             <h1 className="  ">
               {/* here */}
-              <Miniboard />
+              <Miniboard category='렌트/룸메' data={data} />
               {/* here */}
             </h1>
           </div>
@@ -36,14 +36,14 @@ export default function Home() {
           <div className="bg-lime-600">
             <h1 className="  ">
               {/* here */}
-              <Miniboard />
+              <Miniboard category='채용공고' data={data} />
               {/* here */}
             </h1>
           </div>
           <div className="  bg-green-600">
             <h1 className="  ">
               {/* here */}
-              <Miniboard />
+              <Miniboard category='사고/팔고' data={data} />
               {/* here */}
             </h1>
           </div>
@@ -52,7 +52,7 @@ export default function Home() {
           </div> */}
           <div className="  bg-teal-500 md:col-span-2 sm:col-span-1">
             <h1 className="  ">
-              <Miniboard />
+              <Miniboard category='Gallery' data={data} />
             </h1>
           </div>
           <div className="  bg-purple-500 hidden md:w-4/5 md:flex">
