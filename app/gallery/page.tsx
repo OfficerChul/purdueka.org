@@ -48,7 +48,7 @@ export default function Page() {
           <img className="h-auto max-w-full" src={props.myImage?.href} alt="" />
           <div className="mt-4 flex just">
           {
-            props.myImage?.tags.map(e => <Badge className="mr-1" color="gray">{e}</Badge>)
+            props.myImage?.tags.map(e => <Badge key={e} className="mr-1" color="gray">{e}</Badge>)
           }
           </div>
         </Modal.Body>
@@ -62,7 +62,7 @@ export default function Page() {
         </Modal.Footer>
       </Modal>
     {
-      data.map(outer => <div className="grid gap-4">
+      data.map((outer, idx) => <div className="grid gap-4" key={idx}>
         {
           outer.map(e => <div
             onClick={() => [props.setOpenModal('dismissible'), props.setMyImage(e) ]}
