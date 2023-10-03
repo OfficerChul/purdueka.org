@@ -28,7 +28,7 @@ export default function Page() {
   const [openModal, setOpenModal] = useState<string | undefined>();
   const [myImage, setMyImage] = useState<MyImage | undefined>();
   const props = { openModal, setOpenModal, myImage, setMyImage };
-  return <>
+  return <div className="p-2">
     <div className="flex justify-between mt-10">
       <div className='text-yellow-600 text-2xl mt-4'>갤러리</div>
       <div>
@@ -81,5 +81,5 @@ export default function Page() {
       <span className='px-2 text-yellow-600 hover:text-black hover:cursor-pointer'>3</span>
       <span className='ps-2 text-yellow-600 hover:text-black hover:cursor-pointer'>Next &gt;</span>
     </div>
-  </>
+  </div>
 }
