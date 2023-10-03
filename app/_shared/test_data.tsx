@@ -1,6 +1,6 @@
-import { BoardDataInterface } from 'app/_interfaces/BoardDataInterface'
+import { BoardResponseDTO } from 'app/_dto/board.dto'
 
-export const data: BoardDataInterface[] = [
+export const data: BoardResponseDTO[] = [
     {
       id: 0,
       title: "2023년 기묘한 밤",

@@ -2,9 +2,9 @@
 "use client" 
 
 import React from 'react'
-import { BoardDataInterface } from '../../_interfaces/BoardDataInterface'
+import { BoardResponseDTO } from '../../_dto/board.dto'
 
-export default function Miniboard(props: { category: string, data: Array<BoardDataInterface> }) {
+export default function Miniboard(props: { category: string, data: Array<BoardResponseDTO> }) {
   const OnPostClick = (event: any, id: any) => {
     window.open("/announcement/"+id, '_blank')?.focus()
   }

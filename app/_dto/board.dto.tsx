@@ -1,4 +1,4 @@
-export interface BoardDataInterface{
+export type BoardResponseDTO = {
     id: number;
     title: string;
     date: string;

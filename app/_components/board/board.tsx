@@ -1,8 +1,8 @@
 "use client"
 
-import { BoardDataInterface } from '../../_interfaces/BoardDataInterface'
+import { BoardResponseDTO } from '../../_dto/board.dto'
 
-export default function Board(props: { category: string, data: Array<BoardDataInterface> }) {
+export default function Board(props: { category: string, data: Array<BoardResponseDTO> }) {
 
   const OnPostClick = (event: any, id: any) => {
     window.open("/announcement/"+id, '_blank')?.focus()
@@ -26,21 +26,21 @@ export default function Board(props: { category: string, data: Array<BoardDataIn
         <div className='w-100'>
           <div className='p-2 grid gird-cols-5'>
             <div className='flex'>
-              <span className='px-2 min-w-[80px] font-semibold'>Number</span>
+              <span className='px-2 w-20 font-semibold'>Number</span>
               <span className='px-2 grow font-semibold text-center'>Title</span>
-              <span className='px-2 min-w-[100px] font-semibold text-center'>Date</span>
-              <span className='px-2 min-w-[80px] font-semibold text-center'>Author</span>
-              <span className='px-2 min-w-[80px] font-semibold text-center'>View</span>
+              <span className='px-2 w-28 font-semibold text-center'>Date</span>
+              <span className='px-2 w-20 font-semibold text-center'>Author</span>
+              <span className='px-2 w-20 font-semibold text-center'>View</span>
             </div>
             <hr className="border border-black h-0 my-4" />
             <div>
               {
                 props.data.map(e => <div key={e.id} className='flex hover:bg-yellow-600 hover:cursor-pointer' onClick={event => OnPostClick(event, e.id)}>
-                  <div className='px-2 my-1 min-w-[80px]'>{e.id}</div>
+                  <div className='px-2 my-1 w-20'>{e.id}</div>
                   <div className='px-2 my-1 grow'>{e.title}</div>
-                  <div className='px-2 my-1 min-w-[100px] text-center truncate'>{e.date}</div>
-                  <div className='px-2 my-1 min-w-[80px] text-center'>{e.author}</div>
-                  <div className='px-2 my-1 min-w-[80px] text-center'>{e.views}</div>
+                  <div className='px-2 my-1 w-28 text-center truncate'>{e.date}</div>
+                  <div className='px-2 my-1 w-20 text-center'>{e.author}</div>
+                  <div className='px-2 my-1 w-20 text-center'>{e.views}</div>
                 </div>
                 )
               }
