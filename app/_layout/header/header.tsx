@@ -61,13 +61,6 @@ export default function Header() {
 
 
       </nav>
-
-
-      {/* banner start */}
-
-      <div className="h-[36vw] overflow-hidden">
-        <Image alt='banner' src='/banner.jpeg' className='w-full' width='1280' height='1280'></Image>
-      </div>
     </>
   )
 }

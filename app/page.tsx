@@ -5,7 +5,7 @@ import { data } from './_shared/test_data'
 export default function Home() {
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex justify-center mb-20">
         <div className="justify-center w-4/5 grid sm:grid-cols-1 md:grid-cols-3 mt-10 gap-1">
           <div className="grid grid-cols-2 gap-1 md:hidden">
             <h1 className="bg-yellow-600">THREE<Image alt='google' width='300' height='96' src='/google_logo.png'></Image></h1>
