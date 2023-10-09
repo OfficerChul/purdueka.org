@@ -32,11 +32,11 @@ export default function Header() {
               </button>
             </div>
             <hr className="border-t border-stone-950"/>
-            <li><a href='/intro' className={`${underlineEffect} text-2xl`}>소개</a></li>
-            <li><a href='/info' className={`${underlineEffect} text-2xl`}>퍼듀 정보</a></li>
-            <li><a href='/hire-announcement' className={`${underlineEffect} text-2xl`}>채용 공고</a></li>
-            <li><a href='/contact' className={`${underlineEffect} text-2xl`}>Contact Us</a></li>
-            <li><a href='/search' className={`${underlineEffect} text-2xl`}>사고/팔고</a></li>
+            <li><Link href='/intro' className={`${underlineEffect} text-2xl`}>소개</Link></li>
+            <li><Link href='/info' className={`${underlineEffect} text-2xl`}>퍼듀 정보</Link></li>
+            <li><Link href='/hire-announcement' className={`${underlineEffect} text-2xl`}>채용 공고</Link></li>
+            <li><Link href='/contact' className={`${underlineEffect} text-2xl`}>Contact Us</Link></li>
+            <li><Link href='/search' className={`${underlineEffect} text-2xl`}>사고/팔고</Link></li>
 
           </ul>
           <div className="absolute right-0 bottom-2 flex gap-3 text-white p-3">
@@ -56,7 +56,7 @@ export default function Header() {
 
           <Link href='/' ><Image className='h-20 m-auto' src='/pka_logo.png' alt='logo' width='317' height='96'></Image></Link>
 
-          <Image className='h-20 m-auto' src='/pka_logo.png' alt='logo' width='317' height='96'></Image>
+          <Link href='/' ><Image className='h-20 m-auto' src='/pka_logo.png' alt='logo' width='317' height='96'></Image></Link>
 
           <div className="grow"></div>
           <ul className="text-yellow-600 md:flex lg:gap-10 md:gap-5 md:mr-3 hidden whitespace-nowrap">
