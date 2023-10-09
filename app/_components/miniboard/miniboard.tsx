@@ -1,5 +1,6 @@
 // 안쓰면 에러 뜸
-"use client" 
+"use client"
+
 
 import React from 'react'
 import { BoardResponseDTO } from '../../_dto/board.dto'
@@ -27,6 +28,44 @@ export default function Miniboard(props: { category: string, data: Array<BoardRe
           
       </div>
     </div>
-        
+
   )
 }
+
+const data: BoardDataInterface[] = [
+  {
+    id: 0,
+    title: "2023년 기묘한 밤",
+    date: "1 시간 전",
+    author: "PKA",
+    views: 30,
+  },
+  {
+    id: 1,
+    title: "asdfs",
+    date: "2023.09.10",
+    author: "ffff",
+    views: 4,
+  },
+  {
+    id: 2,
+    title: "asdfs",
+    date: "2023.09.10",
+    author: "ffff",
+    views: 4,
+  },
+  {
+    id: 3,
+    title: "asdfs",
+    date: "2023.09.10",
+    author: "ffff",
+    views: 4,
+  },
+  {
+    id: 4,
+    title: "[Hwanwha 2-23 Hanhwa Travel Award 모집공고",
+    date: "2023.09.10",
+    author: "ffff",
+    views: 4,
+  }
+]
