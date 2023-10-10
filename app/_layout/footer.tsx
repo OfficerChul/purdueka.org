@@ -2,12 +2,12 @@ export default function Footer(){
     return (
         <footer className="w-full">
           <div className="bg-yellow-600 p-8">
-            <div className="flex bg-white w-full rounded-full p-1">
+            <div className="flex bg-white w-full rounded-full p-1 container mx-auto">
               <input type="email" placeholder="이메일 주소를 입력해주세요" className="w-full rounded-full focus:outline-none ps-8 truncate" />
               <button className="w-1/4 bg-black text-white p-4 rounded-full min-w-fit">구독하기</button>
             </div>
           </div>
-          <div className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 mx-20 my-8">
+          <div className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 container mx-20 sm:mx-auto my-8">
             <div className="p-4">
               <a href="#" className="font-bold text-yellow-600">PKA</a>
               <ul className="mt-6">
