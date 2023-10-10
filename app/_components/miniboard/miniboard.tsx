@@ -32,7 +32,7 @@ export default function Miniboard(props: { category: string, data: Array<BoardRe
   )
 }
 
-const data: BoardDataInterface[] = [
+const data: BoardResponseDTO[] = [
   {
     id: 0,
     title: "2023년 기묘한 밤",
