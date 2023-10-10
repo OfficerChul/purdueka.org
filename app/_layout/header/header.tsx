@@ -82,9 +82,6 @@ export default function Header() {
 
       {/* banner start */}
 
-      <div className="h-[36vw] truncate">
-        <Image alt='banner' src='/banner.jpeg' className='w-full' width='1280' height='1280'></Image>
-      </div>
     </>
   )
 }
