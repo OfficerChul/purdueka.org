@@ -1,6 +1,6 @@
 import Miniboard from './_components/miniboard/miniboard'
 import Image from 'next/image'
-import { data } from './_shared/test_data'
+import { data } from './_shared/tests/test_data'
 
 export default function Home() {
   return (
