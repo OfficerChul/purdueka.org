@@ -18,7 +18,7 @@ export default function Header() {
 
       <div className={`py-2 transition-all duration-300 ease-in ${isMenuOpen ? "" : 'right-[-100%]'} bg-yellow-600 fixed h-full right-0 w-9/12`}>
 
-        <div className="bg-[#CEB888] h-full p-5">
+        <div className="bg-boilermaker-gold h-full p-5">
 
           {/* mobile screen */}
           <ul className="text-stone-950 flex gap-4 flex-col">
