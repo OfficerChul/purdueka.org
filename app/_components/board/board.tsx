@@ -1,42 +1,28 @@
 "use client"
 
-import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { BoardResponseDTO } from '../../_dto/board.dto'
 import { Category } from 'app/_shared/enums/categories'
+import Pagination from '../pagination/pagination'
+import { useState } from 'react'
+import { paginate } from 'app/_helper/pagination'
 
 export default function Board(props: { category: string, data: Array<BoardResponseDTO> }) {
+  const { category, data } = props;
+  const [ currentPage, setCurrentPage ] = useState(1);
+  const pageSize = 10;
+  const categoryKor = Object.values(Category)[Object.keys(Category).indexOf(category)]
   const router = useRouter()
 
-  let urlParams;
-  let page = 1;
-  useEffect(() => {
-    urlParams = new URLSearchParams(window.location.search)
-    let pageParam = urlParams.get('page');
-    if (pageParam == null) {
-      pageParam = "1"
-    }
-    page = parseInt(pageParam)
-  });
-
-  const categoryKor = Object.values(Category)[Object.keys(Category).indexOf(props.category)]
-
   const OnPostClick = (event: any, id: any) => {
-    router.push("/announcement/"+id)
+    router.push("/announcement/"+id);
   }
 
-  const getPagination = () => {
-    let pages = [];
-    for (let i = 0; i < Math.floor(props.data.length / 10) + 1; i++) {
-      if (i + 1 == page) {
-        pages.push(<span key={i + 1} className='px-2 text-black select-none'>{i + 1}</span>)
-      }
-      else {
-        pages.push(<a key={i + 1} href={['/', props.category, '?page=', i + 1].join('')} className='px-2 text-yellow-600 hover:text-black'>{i + 1}</a>)
-      }
-    }
-    return pages;
+  const OnPageChange = (page: number) => {
+    setCurrentPage(page);
   }
+
+  const paginatedPosts = paginate(data, currentPage, pageSize);
 
   return (
     <div>
@@ -65,7 +51,7 @@ export default function Board(props: { category: string, data: Array<BoardRespon
             <hr className="border border-black h-0 my-4" />
             <div>
               {
-                props.data.map(e => <div key={e.id} className='flex hover:bg-yellow-600 hover:cursor-pointer' onClick={event => OnPostClick(event, e.id)}>
+                paginatedPosts.map(e => <div key={e.id} className='flex hover:bg-yellow-600 hover:cursor-pointer' onClick={event => OnPostClick(event, e.id)}>
                   <div className='hidden sm:block px-2 my-1 w-20'>{e.id}</div>
                   <div className='px-2 my-1 grow'>{e.title}</div>
                   <div className='px-2 my-1 w-28 text-center truncate'>{e.date}</div>
@@ -78,11 +64,11 @@ export default function Board(props: { category: string, data: Array<BoardRespon
           </div>
         </div>
       </div>
-      <div className='mt-4 flex justify-center'>
-        <a className='pe-2 text-yellow-600 hover:text-black' href={['/', props.category, '?page=', (page - 1 > 0) ? page - 1 : page].join('')}>&lt; Prev</a>
-        {getPagination()}
-        <a className='ps-2 text-yellow-600 hover:text-black' href={['/', props.category, '?page=', (page + 1 <= getPagination().length) ? page + 1 : page].join('')}>Next &gt;</a>
-      </div>
+      <Pagination
+        items={data.length}
+        currentPage={currentPage}
+        pageSize={pageSize}
+        OnPageChange={OnPageChange} />
     </div>
   )
 }

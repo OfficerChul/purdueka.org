@@ -70,5 +70,12 @@ export const data: BoardResponseDTO[] = [
       date: "2023.09.10",
       author: "ffff",
       views: 4,
+    },
+    {
+      id: 10,
+      title: "asdfdsfdsfdsfs",
+      date: "2023.09.10",
+      author: "ffff",
+      views: 4,
     }
   ]
