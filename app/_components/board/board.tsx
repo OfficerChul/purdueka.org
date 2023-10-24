@@ -25,37 +25,37 @@ export default function Board(props: { category: string, data: Array<BoardRespon
   const paginatedPosts = paginate(data, currentPage, pageSize);
 
   return (
-    <div>
-      <div className="flex justify-between mt-10">
-        <div className='text-yellow-600 text-2xl'>{categoryKor}</div>
-        <div>
-          <input type="text" id="first_name" className="border border-black text-gray-900 text-sm block w-full p-2.5" placeholder="검색하세요." />
+    <div className='mt-10'>
+      <hr className="bg-boilermaker-gold w-1/3 h-2 my-4" />
+      <div className="flex justify-between">
+        <div className='text-2xl'>{categoryKor}</div>
+        <div className='flex'>
+          <div className='flex items-center border border-black text-gray-900 text-sm w-56 px-2'>
+            <input type="text" id="first_name" className="focus:outline-none w-full" placeholder="Search" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+          </div>
+          <button className="bg-boilermaker-gold ms-4 py-2 px-4 rounded">글쓰기</button>
         </div>
       </div>
-      <div className="mt-4 flex justify-end">
-        <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
-          글쓰기
-        </button>
-      </div>
-      <div className='mt-4 border border-x-white border-y-yellow-600 border-y-4'>
+      <div className='mt-10 border border-white'>
         <div className='w-100' style={{minHeight: 394 + 'px'}}>
           <div className='p-2 grid gird-cols-5'>
             <div className='flex'>
-              <span className='hidden sm:block px-2 w-20 font-semibold'>Number</span>
-              <span className='px-2 grow font-semibold text-center'>Title</span>
-              <span className='px-2 w-28 font-semibold text-center'>Date</span>
-              <span className='hidden sm:block px-2 w-20 font-semibold text-center'>Author</span>
-              <span className='px-2 w-20 font-semibold text-center'>View</span>
+              <span className='px-2 grow font-semibold text-center'>제목</span>
+              <span className='px-2 w-28 lg:w-36 font-semibold'>날짜</span>
+              <span className='hidden sm:block px-2 w-20 lg:w-36 font-semibold'>작성자</span>
+              <span className='px-2 w-16 sm:w-24 lg:w-28 font-semibold'>조회수</span>
             </div>
-            <hr className="border border-black h-0 my-4" />
-            <div>
+            <div className='mt-4'>
               {
-                paginatedPosts.map(e => <div key={e.id} className='flex hover:bg-yellow-600 hover:cursor-pointer' onClick={event => OnPostClick(event, e.id)}>
-                  <div className='hidden sm:block px-2 my-1 w-20'>{e.id}</div>
+                paginatedPosts.map(e => <div key={e.id} className='flex hover:underline hover:cursor-pointer' onClick={event => OnPostClick(event, e.id)}>
+                  
                   <div className='px-2 my-1 grow'>{e.title}</div>
-                  <div className='px-2 my-1 w-28 text-center truncate'>{e.date}</div>
-                  <div className='hidden sm:block px-2 my-1 w-20 text-center'>{e.author}</div>
-                  <div className='px-2 my-1 w-20 text-center'>{e.views}</div>
+                  <div className='px-2 my-1 w-28 lg:w-36 truncate'>{e.date}</div>
+                  <div className='hidden sm:block px-2 my-1 w-20 lg:w-36'>{e.author}</div>
+                  <div className='px-2 my-1 w-16 sm:w-24 lg:w-28'>{e.views}</div>
                 </div>
                 )
               }
