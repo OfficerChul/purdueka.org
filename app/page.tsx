@@ -114,9 +114,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-
       </div>
-
       <div className="container m-auto my-8">
         <div className="text-2xl">Gallery</div>
       </div>
