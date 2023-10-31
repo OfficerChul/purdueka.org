@@ -81,20 +81,8 @@ export default function Header() {
 
       {/* banner start */}
 
-      <div className="h-[36vw] truncate relative">
+      <div className="h-[36vw] truncate">
         <Image alt='banner' src='/banner.jpeg' className='w-full' width='1280' height='1280'></Image>
-        <div className="absolute inset-0 w-full h-full flex text-white bg-black bg-opacity-70">
-          <div className="absolute left-20 top-20">
-            <p className='text-4xl'>안녕하세요,<br /><br /></p>
-
-            <p className='text-2xl'>PKA는 퍼듀 재학생, 연구원, 그리고 그 가족분들을 위해<br /> 봉사하는 <span className='font-bold'>Purdue 공식 한인 학생회</span>입니다.<br /><br /></p>
-            <p className='text-2xl'>대내적으로는 구성원 간 친목 도모와 학술교류를 매개하<br />고 있습니다. 신입생을 위한 Welcoming Night, 가을체육<br />대회, 그리고 신년회등을 진행하고 있으며, 필요한 경우,<br /> 현지 정착 또한 도와드리고 있습니다.</p>
-          </div>
-          {/* constant left and top value */}
-
-
-        </div>
-
       </div>
     </>
   )
