@@ -31,12 +31,12 @@ export default function Header() {
                 {close}
               </button>
             </div>
-            <hr className="border-t border-stone-950"/>
-            <li><Link href='/intro' className={`${underlineEffect} text-2xl`}>소개</Link></li>
+            <hr className="border-t border-stone-950" />
+            <li><Link href='/intro' className={`${underlineEffect} text-2xl`}>PKA 소개</Link></li>
             <li><Link href='/info' className={`${underlineEffect} text-2xl`}>퍼듀 정보</Link></li>
-            <li><Link href='/hire-announcement' className={`${underlineEffect} text-2xl`}>채용 공고</Link></li>
+            <li><Link href='/career' className={`${underlineEffect} text-2xl`}>채용 공고</Link></li>
             <li><Link href='/contact' className={`${underlineEffect} text-2xl`}>Contact Us</Link></li>
-            <li><Link href='/search' className={`${underlineEffect} text-2xl`}>사고/팔고</Link></li>
+            <li><Link href='/search' className={`${underlineEffect} text-2xl`}>로그아웃</Link></li>
 
           </ul>
           <div className="absolute right-0 bottom-2 flex gap-3 text-white p-3">
@@ -46,7 +46,7 @@ export default function Header() {
         </div>
 
       </div>
-      <nav className=" bg-white sm:bg-stone-950 w-full h-20">
+      <nav className="bg-white sm:bg-stone-950 w-full h-20">
         <div className="items-center m-auto container flex justify-between truncate">
 
           <button onClick={toggleMenu} className={`${isMenuOpen ? "hidden" : ""} text-stone-950 md:hidden absolute right-5`}>
@@ -56,14 +56,14 @@ export default function Header() {
 
           <Link href='/' ><Image className='h-20 m-auto' src='/pka_logo.png' alt='logo' width='317' height='96'></Image></Link>
 
-          <Link href='/' ><Image className='h-20 m-auto' src='/pka_logo.png' alt='logo' width='317' height='96'></Image></Link>
+          {/* <Link href='/' ><Image className='h-20 m-auto' src='/pka_logo.png' alt='logo' width='317' height='96'></Image></Link> */}
 
           <div className="grow"></div>
           <ul className="text-yellow-600 md:flex lg:gap-10 md:gap-5 md:mr-3 hidden whitespace-nowrap">
 
-            <li><Link href='/intro' className={`${underlineEffect}`}>소개</Link></li>
+            <li><Link href='/intro' className={`${underlineEffect}`}>PKA 소개</Link></li>
             <li><Link href='/info' className={`${underlineEffect}`}>퍼듀 정보</Link></li>
-            <li><Link href='/hire-announcement' className={`${underlineEffect}`}>채용 공고</Link></li>
+            <li><Link href='/career' className={`${underlineEffect}`}>채용공고</Link></li>
             <li><Link href='/contact' className={`${underlineEffect}`}>Contact Us</Link></li>
             <li><Link href='/search' className={`${underlineEffect}`}>{searchIcon}</Link></li>
             <li><Link href='/login' className={`${underlineEffect}`}>{login}</Link></li>
@@ -83,15 +83,27 @@ export default function Header() {
 
       {/* banner start */}
 
-      <div className="h-[36vw] truncate">
+      <div className="h-[36vw] truncate relative">
         <Image alt='banner' src='/banner.jpeg' className='w-full' width='1280' height='1280'></Image>
+        <div className="absolute inset-0 w-full h-full flex text-white bg-black bg-opacity-70">
+          <div className="absolute left-20 top-20">
+            <p className='text-4xl'>안녕하세요,<br /><br /></p>
+
+            <p className='text-2xl'>PKA는 퍼듀 재학생, 연구원, 그리고 그 가족분들을 위해<br /> 봉사하는 <span className='font-bold'>Purdue 공식 한인 학생회</span>입니다.<br /><br /></p>
+            <p className='text-2xl'>대내적으로는 구성원 간 친목 도모와 학술교류를 매개하<br />고 있습니다. 신입생을 위한 Welcoming Night, 가을체육<br />대회, 그리고 신년회등을 진행하고 있으며, 필요한 경우,<br /> 현지 정착 또한 도와드리고 있습니다.</p>
+          </div>
+          {/* constant left and top value */}
+
+
+        </div>
+
       </div>
     </>
   )
 }
 
 const hamburger = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-<path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
 </svg>
 
 const close = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8">
@@ -99,7 +111,7 @@ const close = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 2
 </svg>
 
 const x_btn = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-<path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
 </svg>
 
 const underlineEffect = "relative w-fit after:block after:content-[''] after:absolute after:h-[1px] after:bg-yellow-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
