@@ -19,12 +19,16 @@ export default function Home() {
           
           <div className="bg-teal-500 md:col-span-2">
             <h1 className="  ">
-              <Miniboard category='announcement' data={data} />
+              {/* here */}
+              <Miniboard category='announcement' categoryKor='공지사항' data={data} />
+              {/* here */}
             </h1>
           </div>
           <div className="bg-amber-500 md:col-span-2">
             <h1 className="  ">
-              <Miniboard category='housing' data={data} />
+              {/* here */}
+              <Miniboard category='housing' categoryKor='렌트/룸메' data={data} />
+              {/* here */}
             </h1>
           </div>
 
@@ -36,18 +40,22 @@ export default function Home() {
 
           <div className="bg-lime-600 md:col-span-2">
             <h1 className="  ">
-              <Miniboard category='recruiting' data={data} />
+              {/* here */}
+              <Miniboard category='recruiting' categoryKor='채용공고' data={data} />
+              {/* here */}
             </h1>
           </div>
           <div className="  bg-green-600 md:col-span-2">
             <h1 className="  ">
-              <Miniboard category='market' data={data} />
+              {/* here */}
+              <Miniboard category='market' categoryKor='사고/팔고' data={data} />
+              {/* here */}
             </h1>
           </div>
 
           <div className="  bg-teal-500 md:col-span-4 sm:col-span-1">
             <h1 className="  ">
-              <Miniboard category='Gallery' data={data} />
+              <Miniboard category='Gallery' categoryKor='갤러리' data={data} />
             </h1>
           </div>
           <div className="  bg-purple-500 hidden md:flex">

@@ -5,7 +5,7 @@ import { data } from '../../_shared/tests/test_data'
 export default async  function Page({ params }: { params: { id: string } }) {
   return (
     <div>
-      <Board category="announcement" data={data} />
+      <Board category="announcement" categoryKor="공지사항" data={data} />
     </div>
   )
 }

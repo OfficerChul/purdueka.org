@@ -2,20 +2,18 @@
 
 import { useRouter } from 'next/navigation'
 import { BoardResponseDTO } from '../../_dto/board.dto'
-import { Category } from 'app/_shared/enums/categories'
 import Pagination from '../pagination/pagination'
 import { useState } from 'react'
 import { paginate } from 'app/_helper/pagination'
 
-export default function Board(props: { category: string, data: Array<BoardResponseDTO> }) {
-  const { category, data } = props;
+export default function Board(props: { category: string, categoryKor: string, data: Array<BoardResponseDTO> }) {
+  const { category, categoryKor, data } = props;
   const [ currentPage, setCurrentPage ] = useState(1);
   const pageSize = 10;
-  const categoryKor = Object.values(Category)[Object.keys(Category).indexOf(category)]
   const router = useRouter()
 
   const OnPostClick = (event: any, id: any) => {
-    router.push("/announcement/"+id);
+    router.push(`/${category}/${id}`);
   }
 
   const OnPageChange = (page: number) => {

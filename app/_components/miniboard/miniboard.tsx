@@ -1,19 +1,18 @@
 // 안쓰면 에러 뜸
 "use client"
 
-
 import React from 'react'
+import { useRouter } from 'next/navigation'
 import { BoardResponseDTO } from '../../_dto/board.dto'
-import { Category } from 'app/_shared/enums/categories';
 import { paginate } from 'app/_helper/pagination';
 
-export default function Miniboard(props: { category: string, data: Array<BoardResponseDTO> }) {
-  const { category, data } = props;
-  const categoryKor = Object.values(Category)[Object.keys(Category).indexOf(category)]
+export default function Miniboard(props: { category: string, categoryKor: string, data: Array<BoardResponseDTO> }) {
+  const { category, categoryKor, data } = props;
   const numOfPosts = 10;
+  const router = useRouter()
 
   const OnPostClick = (event: any, id: any) => {
-    window.open("/announcement/"+id, '_blank')?.focus()
+    router.push(`/${category}/${id}`);
   }
 
   const paginatedPosts = paginate(data, 1, numOfPosts);
@@ -23,7 +22,7 @@ export default function Miniboard(props: { category: string, data: Array<BoardRe
       <div className="flex overflow-hidden flex-col text-black border-8 border-white w-full mt-1 mb-1 bg-white">
         <div className="flex justify-between mb-4">
           <span className="text-xl">{categoryKor}</span>
-          <a className='text-xs' href={'/'+category}>더보기</a>
+          <a className='text-xs' href={`/${category}`}>더보기</a>
         </div>
         {
           paginatedPosts.map( 
