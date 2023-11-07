@@ -6,14 +6,14 @@ import Pagination from '../pagination/pagination'
 import { useState } from 'react'
 import { paginate } from 'app/_helper/pagination'
 
-export default function Board(props: { category: string, categoryKor: string, data: Array<BoardResponseDTO> }) {
-  const { category, categoryKor, data } = props;
+export default function Board(props: { base_url: string, title: string, data: Array<BoardResponseDTO> }) {
+  const { base_url, title, data } = props;
   const [ currentPage, setCurrentPage ] = useState(1);
   const pageSize = 10;
   const router = useRouter()
 
   const OnPostClick = (event: any, id: any) => {
-    router.push(`/${category}/${id}`);
+    router.push(`/${base_url}/${id}`);
   }
 
   const OnPageChange = (page: number) => {
@@ -26,7 +26,7 @@ export default function Board(props: { category: string, categoryKor: string, da
     <div className='mt-10'>
       <hr className="bg-boilermaker-gold w-1/3 h-2 my-4" />
       <div className="flex justify-between">
-        <div className='text-2xl'>{categoryKor}</div>
+        <div className='text-2xl'>{title}</div>
         <div className='flex'>
           <div className='flex items-center border border-black text-gray-900 text-sm w-56 px-2'>
             <input type="text" id="first_name" className="focus:outline-none w-full" placeholder="Search" />

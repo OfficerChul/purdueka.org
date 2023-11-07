@@ -2,10 +2,10 @@ import Board from '../../_components/board/board'
 import Miniboard from '../../_components/miniboard/miniboard'
 import { data } from '../../_shared/tests/test_data'
 
-export default async  function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: string } }) {
   return (
     <div>
-      <Board category="announcement" categoryKor="공지사항" data={data} />
+      <Board base_url="announcement" title="공지사항" data={data} />
     </div>
   )
 }
