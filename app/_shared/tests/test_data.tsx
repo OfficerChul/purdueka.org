@@ -42,40 +42,5 @@ export const data: BoardResponseDTO[] = [
       date: "2023.09.10",
       author: "ffff",
       views: 4,
-    },
-    {
-      id: 6,
-      title: "asdfs",
-      date: "2023.09.10",
-      author: "ffff",
-      views: 4,
-    },
-    {
-      id: 7,
-      title: "asdfs",
-      date: "2023.09.10",
-      author: "ffff",
-      views: 4,
-    },
-    {
-      id: 8,
-      title: "asdfs",
-      date: "2023.09.10",
-      author: "ffff",
-      views: 4,
-    },
-    {
-      id: 9,
-      title: "asdfs",
-      date: "2023.09.10",
-      author: "ffff",
-      views: 4,
-    },
-    {
-      id: 10,
-      title: "asdfdsfdsfdsfs",
-      date: "2023.09.10",
-      author: "ffff",
-      views: 4,
     }
   ]
