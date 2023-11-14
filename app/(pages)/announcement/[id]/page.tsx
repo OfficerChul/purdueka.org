@@ -1,7 +1,7 @@
-import { getOne } from "app/_api/announcement.api"
+import api from "app/_api/"
 
 export default async function Page({ params }: { params: { id: string } }) {
-    const res = await getOne(params.id)
+    const res = await api.announcement.getOne(params.id)
     return (
         <div className="max-w-5xl mx-auto">
             <div className="flex justify-between mt-10">
