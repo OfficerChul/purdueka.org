@@ -6,14 +6,14 @@ import Pagination from '../pagination/pagination'
 import { useState } from 'react'
 import { paginate } from 'app/_helper/pagination'
 
-export default function Board(props: { base_url: string, title: string, data: Array<BoardResponseDTO> }) {
-  const { base_url, title, data } = props;
+export default function Board(props: { baseUrl: string, title: string, data: Array<BoardResponseDTO> }) {
+  const { baseUrl, title, data } = props;
   const [ currentPage, setCurrentPage ] = useState(1);
   const pageSize = 10;
   const router = useRouter()
 
   const OnPostClick = (event: any, id: any) => {
-    router.push(`/${base_url}/${id}`);
+    router.push(`/${baseUrl}/${id}`);
   }
 
   const OnPageChange = (page: number) => {
