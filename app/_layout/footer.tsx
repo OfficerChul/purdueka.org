@@ -1,6 +1,6 @@
 export default function Footer(){
     return (
-        <footer className="w-full bg-black py-10">
+        <footer className="w-full bg-black py-10 relative top-20">
           {/* <div className="bg-yellow-600 p-8">
             <div className="flex bg-white w-full rounded-full p-1 container mx-auto">
               <input type="email" placeholder="이메일 주소를 입력해주세요" className="w-full rounded-full focus:outline-none ps-8 truncate" />
