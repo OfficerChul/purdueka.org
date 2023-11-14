@@ -46,7 +46,7 @@ export default function Header() {
         </div>
 
       </div>
-      <nav className="bg-white sm:bg-stone-950 w-full h-20">
+      <nav className="bg-white sm:bg-stone-950 w-full h-20 fixed">
         <div className="items-center m-auto container flex justify-between truncate">
 
           <button onClick={toggleMenu} className={`${isMenuOpen ? "hidden" : ""} text-stone-950 md:hidden absolute right-5`}>
@@ -81,8 +81,15 @@ export default function Header() {
 
       {/* banner start */}
 
-      <div className="h-[36vw] truncate">
+      <div className="h-[36vw] truncate relative top-20">
         <Image alt='banner' src='/banner.jpeg' className='w-full' width='1280' height='1280'></Image>
+        <div className="absolute inset-0 w-full h-full flex text-white bg-black bg-opacity-70">
+          
+          {/* constant left and top value */}
+
+
+        </div>
+
       </div>
     </>
   )
