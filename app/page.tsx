@@ -10,10 +10,10 @@ export default function Home() {
         <div className="flex flex-col truncate gap-10">
           <div className="flex gap-12">
             <h1 className="flex-grow">
-              <Miniboard base_url='announcement' title='공지사항' data={data} />
+              <Miniboard baseUrl='announcement' title='공지사항' data={data} />
             </h1>
             <h1 className="flex-grow">
-              <Miniboard base_url='housing' title='렌트/룸메' data={data} />
+              <Miniboard baseUrl='housing' title='렌트/룸메' data={data} />
             </h1>
             <div className="flex flex-col bg-stone-200 p-3 rounded-md gap-2">
               <p className='text-xl'>PKA 뉴스레터</p>
@@ -28,10 +28,10 @@ export default function Home() {
           <div className="flex gap-12">
 
             <h1 className="flex-grow">
-              <Miniboard base_url='recruiting' title="채용공고" data={data} />
+              <Miniboard baseUrl='recruiting' title="채용공고" data={data} />
             </h1>
             <h1 className="flex-grow">
-              <Miniboard base_url='market' title="사고/팔고" data={data} />
+              <Miniboard baseUrl='market' title="사고/팔고" data={data} />
             </h1>
             {/* 색깔? */}
             <div className="p-3 flex items-center bg-boilermaker-gold rounded-md">

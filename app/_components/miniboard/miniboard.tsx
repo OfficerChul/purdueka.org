@@ -6,13 +6,13 @@ import { useRouter } from 'next/navigation'
 import { BoardResponseDTO } from '../../_dto/board.dto'
 import { paginate } from 'app/_helper/pagination';
 
-export default function Miniboard(props: { base_url: string, title: string, data: Array<BoardResponseDTO> }) {
-  const { base_url, title, data } = props;
+export default function Miniboard(props: { baseUrl: string, title: string, data: Array<BoardResponseDTO> }) {
+  const { baseUrl, title, data } = props;
   const numOfPosts = 10;
   const router = useRouter()
 
   const OnPostClick = (event: any, id: any) => {
-    router.push(`/${base_url}/${id}`);
+    router.push(`/${baseUrl}/${id}`);
   }
 
   const paginatedPosts = paginate(data, 1, numOfPosts);
@@ -22,7 +22,7 @@ export default function Miniboard(props: { base_url: string, title: string, data
       <div className="flex overflow-hidden flex-col text-black border-8 border-white w-full mt-1 mb-1 bg-white">
         <div className="flex justify-between mb-4">
           <span className="text-xl">{title}</span>
-          <a className='text-xs' href={`/${base_url}`}>더보기</a>
+          <a className='text-xs' href={`/${baseUrl}`}>더보기</a>
         </div>
         {
           paginatedPosts.map( 
