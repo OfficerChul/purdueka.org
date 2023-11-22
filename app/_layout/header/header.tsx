@@ -46,7 +46,8 @@ export default function Header() {
         </div>
 
       </div>
-      <nav className="bg-white sm:bg-stone-950 w-full h-20 fixed">
+
+      <nav className="bg-white sm:bg-stone-950 w-full h-20 fixed z-10">
         <div className="items-center m-auto container flex justify-between truncate">
 
           <button onClick={toggleMenu} className={`${isMenuOpen ? "hidden" : ""} text-stone-950 md:hidden absolute right-5`}>
@@ -64,7 +65,7 @@ export default function Header() {
             <li><Link href='/career' className={`${underlineEffect}`}>채용공고</Link></li>
             <li><Link href='/contact' className={`${underlineEffect}`}>Contact Us</Link></li>
             <li><Link href='/search' className={`${underlineEffect}`}>{searchIcon}</Link></li>
-            <li><Link href='/login' className={`${underlineEffect}`}>{login}</Link></li>
+            <li><Link href='/login' className={`${underlineEffect}`}>로그인</Link></li>
 
           </ul>
 
@@ -79,12 +80,14 @@ export default function Header() {
       </nav>
 
 
+
       {/* banner start */}
 
       <div className="h-[36vw] truncate relative top-20">
         <Image alt='banner' src='/banner.jpeg' className='w-full' width='1280' height='1280'></Image>
+        {/* nav bar sticky fixed */}
         <div className="absolute inset-0 w-full h-full flex text-white bg-black bg-opacity-70">
-          
+
           {/* constant left and top value */}
 
 
