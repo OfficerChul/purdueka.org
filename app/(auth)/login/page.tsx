@@ -17,7 +17,7 @@ export default function Page() {
 
       {/* <div className={`${isMenuOpen ? "" : "hidden"} absolute left-1/2 transform -translate-x-1/2 items-center top-40 text-boilermaker-gold bg-black bg-opacity-80 rounded-3xl p-20 w-[527px] h-[500px] flex justify-center flex-col gap-4`}>
         <button onClick={toggleMenu} className='absolute top-7 right-7'>{x_mark}</button> */}
-      <div className=" absolute left-1/2 transform -translate-x-1/2 items-center top-40 text-boilermaker-gold bg-black bg-opacity-80 rounded-3xl p-20 lg:w-[480px] lg:h-[400px] 2xl:w-[527px] 2xl:h-[500px] flex justify-center flex-col gap-4">
+      <div className="z-20 absolute left-1/2 transform -translate-x-1/2 items-center top-40 text-boilermaker-gold bg-black bg-opacity-80 rounded-3xl p-20 lg:w-[480px] lg:h-[400px] 2xl:w-[527px] 2xl:h-[500px] flex justify-center flex-col gap-4">
         {/* <button className='absolute top-7 right-7'>{x_mark}</button> */}
         <Link href={"/null"} className='absolute top-7 right-7'>{x_mark}</Link>
         <h1 className='text-4xl text-boilermaker-gold pb-4 absolute top-10 2xl:top-16'>로그인</h1>
