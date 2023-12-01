@@ -12,6 +12,12 @@ export default function Page() {
   //   setIsMenuOpen(!isMenuOpen);
   // };
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLogin = () => {
+    
+  }
+
   return (
     <>
 
@@ -28,6 +34,7 @@ export default function Page() {
               name="email"
               placeholder="이메일 주소"
               className="w-full rounded-full placeholder-black bg-gray-200 focus:outline-none p-2 ps-4 truncate"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="flex bg-gray-200 w-full rounded-lg h-10 p-1 border-boilermaker-gold border-2">
@@ -36,10 +43,11 @@ export default function Page() {
               name="password"
               placeholder="비밀번호"
               className="w-full rounded-full placeholder-black bg-gray-200 focus:outline-none p-2 ps-4 truncate"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
-          <Button color='boilermaker-gold' className="outline-boilermaker-gold border-2 border-boilermaker-gold w-full cursor-pointer bg-boilermaker-gold h-9 hover:bg-yellow-600 text-white p-4 rounded-lg drop-shadow-md">
+          <Button color='boilermaker-gold' onClick={() => handleLogin()} className="outline-boilermaker-gold border-2 border-boilermaker-gold w-full cursor-pointer bg-boilermaker-gold h-9 hover:bg-yellow-600 text-white p-4 rounded-lg drop-shadow-md">
             로그인
           </Button>
 

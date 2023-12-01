@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 import Link from 'next/link';
 import { Button }  from 'flowbite-react';
@@ -17,9 +17,10 @@ export default function Page() {
                 <h1 className='text-4xl text-boilermaker-gold pb-4 absolute top-16'>회원가입 완료</h1>
                 <div className="text-2xl text-white">회원가입이 완료되셨습니다.</div>
                 <div className="text-md text-white">계정 인증을 위해 귀하의 이메일을 확인해 주세요.</div>
-                <Button color='boilermaker-gold' className="border-2 border-boilermaker-gold relative top-10 w-full cursor-pointer bg-boilermaker-gold h-9 hover:bg-yellow-600 text-white p-4 rounded-lg drop-shadow-md">
+                <button color='boilermaker-gold' className="border-2 border-boilermaker-gold relative top-10 w-full cursor-pointer bg-boilermaker-gold h-9 hover:bg-yellow-600 text-white p-4 rounded-lg drop-shadow-md">
                     확인
-                </Button>
+                </button>
+                
             </div>
         </>
     );

@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { data } from './_shared/tests/test_data'
 import sponsor_data from "./_shared/tests/sponsor_data"
 import { Carousel } from 'flowbite-react';
-import {image_data} from './_shared/tests/image_data'
+import { image_data } from './_shared/tests/image_data'
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
           <p className='sm:text-sm md:text-1xl lg:text-3xl font-thin'>대내적으로는 구성원 간 친목 도모와 학술교류를 매개하<br />고 있습니다. 신입생을 위한 Welcoming Night, 가을체육<br />대회, 그리고 신년회등을 진행하고 있으며, 필요한 경우,<br /> 현지 정착 또한 도와드리고 있습니다.</p>
         </div>
 
-        <div className="flex relative gap-10 top-20 truncate">
+        <div className="flex gap-10 mt-20 truncate">
 
 
           <div className="flex flex-col flex-grow">
@@ -73,7 +73,7 @@ export default function Home() {
 
       </div>
 
-      <div className="container m-auto relative top-20 my-8">
+      <div className="container m-auto mt-4 my-8">
 
         <div className="text-2xl flex justify-center">
           PKA의 스폰서
@@ -81,31 +81,27 @@ export default function Home() {
 
         <div className="flex justify-center m-6">
           {sponsor_data.map((e: any) => e.type == 'platinum' ? <Image key={e.id} className='h-30 w-auto' src={e.img} alt='logo' width='317' height='96'></Image> : null)}
-          
+
         </div>
 
         <div className="flex justify-center m-6">
-        {sponsor_data.map((e: any) => e.type == 'gold' ? <Image key={e.id} className='h-20 w-auto' src={e.img} alt='logo' width='317' height='96'></Image> : null)}
+          {sponsor_data.map((e: any) => e.type == 'gold' ? <Image key={e.id} className='h-20 w-auto' src={e.img} alt='logo' width='317' height='96'></Image> : null)}
         </div>
 
         <div className="flex justify-center m-6">
-        {sponsor_data.map((e: any) => e.type == 'silver' ? <Image key={e.id} className='h-10 w-auto' src={e.img} alt='logo' width='317' height='96'></Image> : null)}
+          {sponsor_data.map((e: any) => e.type == 'silver' ? <Image key={e.id} className='h-10 w-auto' src={e.img} alt='logo' width='317' height='96'></Image> : null)}
         </div>
 
 
       </div>
 
 
-
-
-
-
-      <div className="container m-auto my-8">
-        <div className="text-2xl relative top-20">Gallery</div>
+      <div className="container m-auto my-8 h-56">
+        <div className="text-2xl mt-4">Gallery</div>
+          
         <Carousel>
-          {image_data.map((data: any) => <Image key={data.key} src={data.url} alt={data.url} width='100' height='100' className='z-20'></Image>)}
+          {image_data.map((data: any) => <img key={data.key} src={data.url} alt={data.url} width='100' height='100' className='z-20'></img>)}
         </Carousel>
-
       </div>
     </div>
   )

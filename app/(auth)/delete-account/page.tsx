@@ -82,26 +82,30 @@ export default function Page() {
                         </button>
                     </Link>
                 </div>
-                <div className="w-80 h-auto">
-                    <Modal dismissible show={openModal} className='w-full text-white bg-black' onClose={() => setOpenModal(false)}>
-                        <Modal.Header color='white' className='bg-black text-white'>정말 탈퇴하시겠어요?</Modal.Header>
-                        <Modal.Body className='bg-black'>
-                            <div className="space-y-6 bg-black text-white">
-                                <p className="text-base leading-relaxed bg-black text-white dark:text-gray-400">
-                                    탈퇴 버튼 선택 시, 계정은 삭제되며 복구되지 않습니다.
-                                </p>
-                            </div>
-                        </Modal.Body>
-                        <Modal.Footer className='bg-black flex flex-col gap-3 w-full justify-center'>
-                            <Button color="boilermaker-gold" className=' bg-boilermaker-gold hover:bg-yellow-600 hover:text-black cursor-pointer z-20 w-full border-0 outline-none' onClick={() => setOpenModal(false)}>탈퇴</Button>
-                            <Button className='bg-[#D9D9D9] relative right-1 text-black w-full border-0 outline-0' onClick={() => setOpenModal(false)}>
-                                취소
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div>
+
+
+
 
             </div>
+            <Modal dismissible show={openModal} size="md" className='w-full text-white bg-black' onClose={() => setOpenModal(false)} popup>
+                <Modal.Header color='white' className='bg-black text-white'></Modal.Header>
+                <Modal.Body className='bg-black'>
+                    <div className="h-3">
+                        정말 탈퇴하시겠어요?
+                    </div>
+                    <div className="space-y-6 bg-black text-white">
+                        <p className="text-base leading-relaxed bg-black text-white dark:text-gray-400">
+                            탈퇴 버튼 선택 시, 계정은 삭제되며 복구되지 않습니다.
+                        </p>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer className='bg-black flex flex-col gap-3 w-full justify-center'>
+                    <Button color="boilermaker-gold" className=' bg-boilermaker-gold hover:bg-yellow-600 hover:text-black cursor-pointer z-20 w-full border-0 outline-none' onClick={() => setOpenModal(false)}>탈퇴</Button>
+                    <Button className='bg-[#D9D9D9] relative right-1 text-black w-full border-0 outline-0' onClick={() => setOpenModal(false)}>
+                        취소
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 }

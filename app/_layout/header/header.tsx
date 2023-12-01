@@ -87,7 +87,7 @@ export default function Header() {
         <Image alt='banner' src='/banner.jpeg' className='w-full' width='1280' height='1280'></Image>
         {/* nav bar sticky fixed */}
         <div className="absolute inset-0 w-full h-full flex text-white bg-black bg-opacity-70">
-
+          
           {/* constant left and top value */}
 
 
