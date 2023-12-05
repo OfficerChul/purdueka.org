@@ -4,13 +4,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Button, Modal } from 'flowbite-react';
+import PKAModal from "app/_components/modal/modal";
 
 export default function Page() {
-    // const [isMenuOpen, setIsMenuOpen] = useState(true);
-
-    // const toggleMenu = () => {
-    //   setIsMenuOpen(!isMenuOpen);
-    // };
 
     const [isEyeOpen, setIsEyeOpen] = useState(false);
     const [isSecondEyeOpen, setIsSecondEyeOpen] = useState(false);
@@ -28,11 +24,9 @@ export default function Page() {
 
     return (
         <>
-            {/* <div className={`${isMenuOpen ? "" : "hidden"} absolute left-1/2 transform -translate-x-1/2 items-center top-40 text-boilermaker-gold bg-black bg-opacity-80 rounded-3xl p-20 w-[527px] h-[500px] flex justify-center flex-col gap-4`}>
-        <button onClick={toggleMenu} className='absolute top-7 right-7'>{x_mark}</button> */}
+
             <div className="z-20 absolute left-1/2 transform -translate-x-1/2 items-center top-40 text-boilermaker-gold bg-black bg-opacity-80 rounded-3xl p-20 2xl:w-[527px] 2xl:h-[500px] flex justify-center flex-col gap-4">
-                {/* <button className='absolute top-7 right-7'>{x_mark}</button> */}
-                <Link href={"/null"} className='absolute top-7 right-7'>{x_mark}</Link>
+                <Link href={"/"} className='absolute top-7 right-7'>{x_mark}</Link>
                 <h1 className='text-4xl text-boilermaker-gold pb-4  absolute top-10 2xl:top-16'>회원탈퇴</h1>
 
                 <div className="w-full flex flex-col gap-3 pt-7 justify-center text-center">
@@ -52,7 +46,7 @@ export default function Page() {
                         </div>
 
                     </div>
-                    <div className="flex bg-gray-200 w-full rounded-lg p-1 h-10 text-black border-boilermaker-gold border-2">
+                    <div className="flex bg-gray-200 w-96 rounded-lg p-1 h-10 text-black border-boilermaker-gold border-2">
                         <input
                             type={isSecondEyeOpen ? "text" : "password"}
                             name="password"
@@ -87,25 +81,14 @@ export default function Page() {
 
 
             </div>
-            <Modal dismissible show={openModal} size="md" className='w-full text-white bg-black' onClose={() => setOpenModal(false)} popup>
-                <Modal.Header color='white' className='bg-black text-white'></Modal.Header>
-                <Modal.Body className='bg-black'>
-                    <div className="h-3">
-                        정말 탈퇴하시겠어요?
-                    </div>
-                    <div className="space-y-6 bg-black text-white">
-                        <p className="text-base leading-relaxed bg-black text-white dark:text-gray-400">
-                            탈퇴 버튼 선택 시, 계정은 삭제되며 복구되지 않습니다.
-                        </p>
-                    </div>
-                </Modal.Body>
-                <Modal.Footer className='bg-black flex flex-col gap-3 w-full justify-center'>
-                    <Button color="boilermaker-gold" className=' bg-boilermaker-gold hover:bg-yellow-600 hover:text-black cursor-pointer z-20 w-full border-0 outline-none' onClick={() => setOpenModal(false)}>탈퇴</Button>
-                    <Button className='bg-[#D9D9D9] relative right-1 text-black w-full border-0 outline-0' onClick={() => setOpenModal(false)}>
-                        취소
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+            <PKAModal
+                header='정말로 탈퇴하시겠어요?'
+                context='탈퇴 버튼 선택 시, 계정은 삭제되며 복구되지 않습니다.'
+                button1='탈퇴'
+                button2='취소'
+                openModal={openModal}
+                setOpenModal={setOpenModal}
+            />
         </>
     );
 }
