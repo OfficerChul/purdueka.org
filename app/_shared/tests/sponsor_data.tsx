@@ -12,6 +12,66 @@ const data = [
     {
         id: 0,
         img: "/pka_logo.png",
+        type: "platinum"
+    },
+    {
+        id: 0,
+        img: "/pka_logo.png",
+        type: "platinum"
+    },
+    {
+        id: 0,
+        img: "/pka_logo.png",
+        type: "platinum"
+    },
+    {
+        id: 0,
+        img: "/pka_logo.png",
+        type: "platinum"
+    },
+    {
+        id: 0,
+        img: "/pka_logo.png",
+        type: "platinum"
+    },
+    {
+        id: 0,
+        img: "/pka_logo.png",
+        type: "platinum"
+    },
+    {
+        id: 0,
+        img: "/pka_logo.png",
+        type: "platinum"
+    },
+    {
+        id: 0,
+        img: "/pka_logo.png",
+        type: "platinum"
+    },
+    {
+        id: 0,
+        img: "/pka_logo.png",
+        type: "platinum"
+    },
+    {
+        id: 0,
+        img: "/pka_logo.png",
+        type: "platinum"
+    },
+    {
+        id: 0,
+        img: "/pka_logo.png",
+        type: "platinum"
+    },
+    {
+        id: 0,
+        img: "/pka_logo.png",
+        type: "platinum"
+    },
+    {
+        id: 0,
+        img: "/pka_logo.png",
         type: "gold"
     },
     {
