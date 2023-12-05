@@ -99,7 +99,7 @@ export default function Home() {
         <div className="container m-auto mt-14 mb-20 h-56">
           <div className="text-2xl">Gallery</div>
 
-          <PKACarousel image_data={image_data} leftControl='left' rightControl='right' slideInterval={3000} />
+          <PKACarousel image_data={image_data} />
         </div>
       </div>
     </>
