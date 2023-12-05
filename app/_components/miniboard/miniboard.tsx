@@ -18,7 +18,7 @@ export default function Miniboard(props: { baseUrl: string, title: string, data:
   const paginatedPosts = paginate(data, 1, numOfPosts);
 
   return (
-    <div className="flex justify-center bg-boilermaker-gold" style={{minHeight: 150 + 'px'}}>
+    <div className="flex justify-center bg-boilermaker-gold">
       <div className="flex overflow-hidden flex-col text-black border-8 border-white w-full mt-1 bg-white">
         <div className="flex justify-between mb-4">
           <span className="text-xl">{title}</span>
