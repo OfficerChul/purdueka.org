@@ -18,8 +18,8 @@ export default function Miniboard(props: { baseUrl: string, title: string, data:
         {
           paginatedPosts.map( 
             e =>
-            <div key={e.id} className='flex justify-between items-center cursor-pointer hover:text-stone-400'>
-              <Link href={`/${baseUrl}/${e.id}`}>{e.title}</Link>
+            <div key={e.id} className='flex justify-between items-center'>
+              <Link className='hover:text-stone-400' href={`/${baseUrl}/${e.id}`}>{e.title}</Link>
               <span className='text-stone-400 text-xs'>{e.date}</span>
             </div>
           )
