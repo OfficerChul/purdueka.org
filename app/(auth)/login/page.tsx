@@ -6,20 +6,19 @@ import Link from "next/link";
 import { Button } from 'flowbite-react';
 
 export default function Page() {
-  // const [isMenuOpen, setIsMenuOpen] = useState(true);
-
-  // const toggleMenu = () => {
-  //   setIsMenuOpen(!isMenuOpen);
-  // };
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleLogin = () => {
-    api.auth.signin({ email, password })
-  }
-
+  const [loginFailedCount, setLoginFailedCount] = useState(0);
   const [isEyeOpen, setIsEyeOpen] = useState(false);
-
+  
+  const handleLogin = async () => {
+    const isSucceed = await api.auth.signin({ email, password })
+    if (isSucceed) {
+      window.location.assign("/");
+    } else {
+      setLoginFailedCount(loginFailedCount + 1)
+    }
+  }
   const toggleEye = () => {
     setIsEyeOpen(!isEyeOpen);
   };

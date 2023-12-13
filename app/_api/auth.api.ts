@@ -5,10 +5,14 @@ import { getBearerToken, saveBearerToken } from "./token"
 const baseurl = process.env.NEXT_PUBLIC_API_BASEURL
 const endpoint = `${baseurl}/auth`
 
-async function signin(dto: AuthRequestDTO) {
-  const res = (await axios.post(`${endpoint}/login`, dto))?.data as AuthResponseDTO
-  console.log('res', res)
-  saveBearerToken(res.access_token)
+async function signin(dto: AuthRequestDTO): Promise<boolean> {
+  try {
+    const res = (await axios.post(`${endpoint}/login`, dto))?.data as AuthResponseDTO
+    saveBearerToken(res.access_token)
+    return true
+  } catch (e) {
+    return false
+  }
 }
 
 async function whoami() {
