@@ -68,31 +68,12 @@ export default function Header() {
             <li><Link href='/login' className={`${underlineEffect}`}>로그인</Link></li>
 
           </ul>
-
-
-
-
-
         </div>
-
-
-
       </nav>
-
-
-
       {/* banner start */}
 
-      <div className="h-[36vw] truncate relative top-20">
-        <Image alt='banner' src='/banner.jpeg' className='w-full' width='1280' height='1280'></Image>
-        {/* nav bar sticky fixed */}
-        <div className="absolute inset-0 w-full h-full flex text-white bg-black bg-opacity-70">
-          
-          {/* constant left and top value */}
-
-
-        </div>
-
+      <div className="h-[36vw] truncate h-20">
+        <Image alt='banner' src='/banner.jpeg' className='w-full brightness-50' width='1280' height='1280'></Image>
       </div>
     </>
   )
