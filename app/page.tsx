@@ -10,95 +10,65 @@ import { image_data } from './_shared/tests/image_data'
 export default function Home() {
   return (
     <>
-
-
-      <div className="container m-auto my-8">
-        <div className="absolute container m-auto top-40 text-white">
-          <p className='sm:text-2xl md:text-3xl lg:text-5xl'>안녕하세요,<br /><br /></p>
-
+      <div className="mt-20 h-[36vw] bg-cover bg-no-repeat bg-center bg-[url('/banner-70.jpeg')]">
+        <div className='container m-auto p-4 text-white z-4'>
+          <p className='sm:text-xl md:text-2xl lg:text-3xl'>안녕하세요,<br /><br /></p>
           <p className='sm:text-sm md:text-1xl lg:text-3xl font-thin'>PKA는 퍼듀 재학생, 연구원, 그리고 그 가족분들을 위해<br /> 봉사하는 <span className='font-bold'>Purdue 공식 한인 학생회</span>입니다.<br /><br /></p>
           <p className='sm:text-sm md:text-1xl lg:text-3xl font-thin'>대내적으로는 구성원 간 친목 도모와 학술교류를 매개하<br />고 있습니다. 신입생을 위한 Welcoming Night, 가을체육<br />대회, 그리고 신년회등을 진행하고 있으며, 필요한 경우,<br /> 현지 정착 또한 도와드리고 있습니다.</p>
         </div>
-
-        <div className="mt-40">
-          <div className="flex gap-10 truncate">
-
-
-            <div className="flex flex-col flex-grow">
-
-              <h1 className="flex-grow">
-                <Miniboard baseUrl='announcement' title='공지사항' data={data} />
-              </h1>
-              <h1 className="flex-grow">
-                <Miniboard baseUrl='housing' title='렌트/룸메' data={data} />
-              </h1>
-
-            </div>
-
-
-            <div className="flex flex-col flex-grow">
-
-              <h1 className="flex-grow">
-                <Miniboard baseUrl='announcement' title='채용/인턴쉽' data={data} />
-              </h1>
-              <h1 className="flex-grow">
-                <Miniboard baseUrl='announcement' title='사고팔고' data={data} />
-              </h1>
-
-            </div>
-
-
-
-            <div className="flex gap-3 flex-col lg:w-70 2xl:w-[349px]">
-              <div className="flex flex-col bg-stone-200 p-3 rounded-md gap-2">
-                <p className='text-2xl'>PKA 뉴스레터</p>
-                <p className='mb-2'>매주 놓치면 안되는 소식</p>
-
-                <input className="rounded bg-stone-400 p-2 placeholder-gray-500" type="text" placeholder='이메일'></input>
-                <button className="rounded bg-boilermaker-gold p-2">구독하기</button>
-              </div>
-              <div className="p-5 flex items-center bg-boilermaker-gold rounded-md h-[70px] text-2xl justify-between">
-                <span className='mr-2'>2023 신입생 오픈 채팅</span>
-                <span>{kakaotalk_svg}</span>
-              </div>
-              <div className="p-5 flex items-center bg-boilermaker-gold rounded-md h-[70px] text-2xl justify-between">
-                <span className='mr-2'>문의하기</span>
-                <span>{question_mark_svg}</span>
-              </div>
-            </div>
-
+      </div>
+      <div className="container m-auto mt-4">
+        <div className="flex gap-10 truncate">
+          <div className="flex flex-col flex-grow">
+            <h1 className="flex-grow">
+              <Miniboard baseUrl='announcement' title='공지사항' data={data} />
+            </h1>
+            <h1 className="flex-grow">
+              <Miniboard baseUrl='housing' title='렌트/룸메' data={data} />
+            </h1>
           </div>
+          <div className="flex flex-col flex-grow">
 
-
-
+            <h1 className="flex-grow">
+              <Miniboard baseUrl='announcement' title='채용/인턴쉽' data={data} />
+            </h1>
+            <h1 className="flex-grow">
+              <Miniboard baseUrl='announcement' title='사고팔고' data={data} />
+            </h1>
+          </div>
+          <div className="flex gap-3 flex-col lg:w-70 2xl:w-[349px]">
+            <div className="flex flex-col bg-stone-200 p-3 rounded-md gap-2">
+              <p className='text-2xl'>PKA 뉴스레터</p>
+              <p className='mb-2'>매주 놓치면 안되는 소식</p>
+              <input className="rounded bg-stone-400 p-2 placeholder-gray-500" type="text" placeholder='이메일'></input>
+              <button className="rounded bg-boilermaker-gold p-2">구독하기</button>
+            </div>
+            <div className="p-5 flex items-center bg-boilermaker-gold rounded-md h-[70px] text-2xl justify-between">
+              <span className='mr-2'>2023 신입생 오픈 채팅</span>
+              <span>{kakaotalk_svg}</span>
+            </div>
+            <div className="p-5 flex items-center bg-boilermaker-gold rounded-md h-[70px] text-2xl justify-between">
+              <span className='mr-2'>문의하기</span>
+              <span>{question_mark_svg}</span>
+            </div>
+          </div>
         </div>
-
         <div className="container m-auto my-8">
-
           <div className="text-2xl flex justify-center">
             PKA의 스폰서
           </div>
-
           <div className="flex justify-center m-6 overflow-auto">
             {sponsor_data.map((e: any) => e.type == 'platinum' ? <Image key={e.id} className='h-60 min-w-0 flex-shrink-0' src={e.img} alt='logo' width='317' height='96'></Image> : null)}
           </div>
-
           <div className="flex justify-center m-6 overflow-auto">
             {sponsor_data.map((e: any) => e.type == 'gold' ? <Image key={e.id} className='h-20 w-auto flex-shrink-0' src={e.img} alt='logo' width='317' height='96'></Image> : null)}
           </div>
-
           <div className="flex justify-center m-6 overflow-auto">
             {sponsor_data.map((e: any) => e.type == 'silver' ? <Image key={e.id} className='h-10 w-auto flex-shrink-0' src={e.img} alt='logo' width='317' height='96'></Image> : null)}
           </div>
-
-
-
         </div>
-
-
         <div className="container m-auto mt-14 mb-20 h-56">
           <div className="text-2xl">Gallery</div>
-
           <PKACarousel image_data={image_data} />
         </div>
       </div>

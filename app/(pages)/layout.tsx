@@ -1,3 +1,5 @@
+import PKABanner from 'app/_components/banner/banner'
+import Header from 'app/_layout/header/header'
 import { Inter } from 'next/font/google'
 import Image from 'next/image'
 
@@ -9,11 +11,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <div>
-        <div className="container mx-auto mb-20">
-          {children}
-        </div>
-    </div>
-    
+    <>
+      <Header />
+      <PKABanner />
+      <div className="container mx-auto mb-20">
+        {children}
+      </div>
+    </>
   )
 }

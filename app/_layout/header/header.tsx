@@ -15,11 +15,8 @@ export default function Header() {
 
   return (
     <>
-
       <div className={`py-2 transition-all duration-300 ease-in ${isMenuOpen ? "" : 'right-[-100%]'} bg-yellow-600 fixed h-full right-0 w-9/12`}>
-
         <div className="bg-[#CEB888] h-full p-5">
-
           {/* mobile screen */}
           <ul className="text-stone-950 flex gap-4 flex-col">
             <div className="text-stone-950 text-3xl">Menu</div>
@@ -37,44 +34,30 @@ export default function Header() {
             <li><Link href='/career' className={`${underlineEffect} text-2xl`}>채용 공고</Link></li>
             <li><Link href='/contact' className={`${underlineEffect} text-2xl`}>Contact Us</Link></li>
             <li><Link href='/search' className={`${underlineEffect} text-2xl`}>로그아웃</Link></li>
-
           </ul>
           <div className="absolute right-0 bottom-2 flex gap-3 text-white p-3">
             <button className='bg-stone-950 px-3 py-1 border border-stone-950'>Log In</button>
             <button className='bg-yellow-600 px-3 py-1 border border-stone-950'>Sign Up</button>
           </div>
         </div>
-
       </div>
-
-      <nav className="bg-white sm:bg-stone-950 w-full h-20 fixed z-10">
+      <nav className="bg-white sm:bg-stone-950 w-full fixed top-0 z-10">
         <div className="items-center m-auto container flex justify-between truncate">
-
           <button onClick={toggleMenu} className={`${isMenuOpen ? "hidden" : ""} text-stone-950 md:hidden absolute right-5`}>
             {hamburger}
           </button>
-
-
           <Link href='/' ><Image className='h-20 m-auto' src='/pka_logo.png' alt='logo' width='317' height='96'></Image></Link>
-
-          <div className="grow"></div>
+          <div className="grow" ></div>
           <ul className="text-yellow-600 md:flex lg:gap-10 md:gap-5 md:mr-3 hidden whitespace-nowrap">
-
             <li><Link href='/intro' className={`${underlineEffect}`}>PKA 소개</Link></li>
             <li><Link href='/info' className={`${underlineEffect}`}>퍼듀 정보</Link></li>
             <li><Link href='/career' className={`${underlineEffect}`}>채용공고</Link></li>
             <li><Link href='/contact' className={`${underlineEffect}`}>Contact Us</Link></li>
             <li><Link href='/search' className={`${underlineEffect}`}>{searchIcon}</Link></li>
             <li><Link href='/login' className={`${underlineEffect}`}>로그인</Link></li>
-
           </ul>
         </div>
       </nav>
-      {/* banner start */}
-
-      <div className="h-[36vw] truncate h-20">
-        <Image alt='banner' src='/banner.jpeg' className='w-full brightness-50' width='1280' height='1280'></Image>
-      </div>
     </>
   )
 }
