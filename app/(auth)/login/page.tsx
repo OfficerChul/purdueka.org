@@ -26,13 +26,10 @@ export default function Page() {
 
   return (
     <>
-
-      {/* <div className={`${isMenuOpen ? "" : "hidden"} absolute left-1/2 transform -translate-x-1/2 items-center top-40 text-boilermaker-gold bg-black bg-opacity-80 rounded-3xl p-20 w-[527px] h-[500px] flex justify-center flex-col gap-4`}>
-        <button onClick={toggleMenu} className='absolute top-7 right-7'>{x_mark}</button> */}
-      <div className="z-20 absolute left-1/2 transform -translate-x-1/2 items-center top-40 text-boilermaker-gold bg-black bg-opacity-80 rounded-3xl p-20 lg:w-[480px] lg:h-[400px] 2xl:w-[527px] 2xl:h-[500px] flex justify-center flex-col gap-4">
+      <div className="h-32" />
+      <div className="w-96 bg-black m-auto items-center text-boilermaker-gold bg-opacity-80 rounded-3xl p-12 flex justify-center flex-col">
         {/* <button className='absolute top-7 right-7'>{x_mark}</button> */}
-        <Link href={"/"} className='absolute top-7 right-7'>{x_mark}</Link>
-        <h1 className='text-4xl text-boilermaker-gold pb-4 absolute top-10 2xl:top-16'>로그인</h1>
+        <h1 className='text-4xl text-boilermaker-gold'>로그인</h1>
         <div className="w-full gap-3 flex flex-col justify-center text-center pt-7">
           <div className="flex bg-gray-200 w-full rounded-lg p-1 h-10 border-boilermaker-gold border-2">
             <input
@@ -51,28 +48,24 @@ export default function Page() {
               className="w-full rounded-full placeholder-black  text-black bg-gray-200 focus:outline-none p-2 ps-4 truncate"
               onChange={(e) => setPassword(e.target.value)}
             />
-
             <div className="relative right-2 text-black flex items-center">
               <button onClick={toggleEye} className=''>
                 {isEyeOpen ? eye : eye_slash}
-
               </button>
             </div>
           </div>
-
           <Button color='boilermaker-gold' onClick={() => handleLogin()} className="outline-boilermaker-gold border-2 border-boilermaker-gold w-full cursor-pointer bg-boilermaker-gold h-9 hover:bg-yellow-600 text-white p-4 rounded-lg drop-shadow-md">
             로그인
           </Button>
-
-          <div className='pt-6'>
+          <div className='mt-6'>
             <span>회원이 아니신가요?</span>
-            <Link href="/signup" className="pl-1 text-[#2670FF]">
+            <Link href="/signup" className="ml-1 text-[#2670FF]">
               회원가입
             </Link>
           </div>
         </div>
-
       </div>
+      <div className="h-32" />
     </>
   );
 }
