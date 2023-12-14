@@ -35,8 +35,8 @@ export default function Footer(){
               <div className="w-full lg:w-fit mx-auto">
                 <a href="/#" className="text-yellow-600">렌트/룸메</a>
                 <ul className="mt-6 text-white">
-                  <li className="leading-loose"><a href="/#">렌트/룸메</a></li>
-                  <li className="leading-loose"><a href="/#">글쓰기</a></li>
+                  <li className="leading-loose"><a href="/housing">렌트/룸메</a></li>
+                  <li className="leading-loose"><a href="/housing/new">글쓰기</a></li>
                 </ul>
               </div>
             </div>
@@ -44,8 +44,8 @@ export default function Footer(){
               <div className="w-full lg:w-fit mx-auto">
                 <a href="/#" className="text-yellow-600">사고/팔고</a>
                 <ul className="mt-6 text-white">
-                  <li className="leading-loose"><a href="/#">사고/팔고</a></li>
-                  <li className="leading-loose"><a href="/#">글쓰기</a></li>
+                  <li className="leading-loose"><a href="/fleamarket">사고/팔고</a></li>
+                  <li className="leading-loose"><a href="/fleamarket/new">글쓰기</a></li>
                 </ul>
               </div>
             </div>

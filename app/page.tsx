@@ -10,6 +10,7 @@ import { ReadAllResponseDto } from './_dto/readAll.dto'
 import { useEffect, useState } from 'react'
 import _api from './_api'
 import { BoardResponseDTO } from './_dto/board.dto'
+import Link from 'next/link'
 
 export default function Home() {
   const [announcement, setAnnouncement] = useState([] as BoardResponseDTO[])
@@ -82,10 +83,12 @@ export default function Home() {
               <span className='mr-2'>2023 신입생 오픈 채팅</span>
               <span>{kakaotalk_svg}</span>
             </div>
-            <div className="p-5 flex items-center bg-boilermaker-gold rounded-md h-[70px] text-2xl justify-between">
-              <span className='mr-2'>문의하기</span>
-              <span>{question_mark_svg}</span>
-            </div>
+            <Link href="/contact">
+              <div className="p-5 flex items-center bg-boilermaker-gold rounded-md h-[70px] text-2xl justify-between">
+                <span className='mr-2'>문의하기</span>
+                <span>{question_mark_svg}</span>
+              </div>
+            </Link>
           </div>
         </div>
         <div className="container m-auto my-8">
