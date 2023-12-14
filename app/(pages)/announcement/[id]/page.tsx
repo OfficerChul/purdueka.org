@@ -57,7 +57,7 @@ export default function Page({ params }: { params: { id: string } }) {
           <div className="flex items-end">
             <div className="pe-2">작성자<span className="ms-2 font-light">{data.author}</span></div>
             {/* <div className="px-2">조회수<span className="ms-2 font-light">200</span></div> */}
-            <div className="ps-2">댓글<span className="ms-2 font-light">{data.id}</span></div>
+            <div className="ps-2">댓글<span className="ms-2 font-light">{data.comments.length}개</span></div>
           </div>
         </div>
         <div className="text-end text-boilermaker-gold font-medium mt-3 mb-10">{(new Date(data.createdAt)).toLocaleString('ko-KR')}</div>
@@ -78,7 +78,7 @@ export default function Page({ params }: { params: { id: string } }) {
             <hr className="border-black my-4" />
             <div id="comments">
               {
-                data.comments.map(e => <Comment key={e.id} editor={e.author} date={(new Date(e.createdAt)).toLocaleString('ko-KR')} content={e.content} isLiked={false} isReply={e.isReply} />)
+                data.comments.map(e => <Comment key={e.id} id={e.id} authorId={e.authorId} editor={e.author} date={(new Date(e.createdAt)).toLocaleString('ko-KR')} content={e.content} isLiked={false} isReply={e.isReply} />)
               }
             </div>
           </div>

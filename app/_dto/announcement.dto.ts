@@ -4,6 +4,7 @@ export type ReadAnnouncementResponseDto = {}
 export type CommentsForAnnouncement = {
   id: number;
   content: string;
+  authorId: number;
   author: string;
   isReply: boolean;
   createdAt: Date;

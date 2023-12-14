@@ -26,7 +26,13 @@ async function create(dto: CreateCommentRequestDto): Promise<CreateCommentRespon
   return (await axios.post(`${endpoint}`, dto)).data as CreateCommentResponseDto
 }
 
+async function remove(id: number) {
+  await axios.delete(`${endpoint}/${id}`)
+}
+
+
 export default {
   getOne,
   create,
+  remove,
 }
