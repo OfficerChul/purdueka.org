@@ -1,6 +1,7 @@
 import { AuthRequestDTO, AuthResponseDTO } from "app/_dto/auth.dto"
 import axios from "axios"
 import { getBearerToken, saveBearerToken } from "./token"
+import { UserRole, saveGlobal } from "./global"
 
 const baseurl = process.env.NEXT_PUBLIC_API_BASEURL
 const endpoint = `${baseurl}/auth`
@@ -14,10 +15,26 @@ async function signin(dto: AuthRequestDTO): Promise<boolean> {
   try {
     const res = (await axios.post(`${endpoint}/login`, dto))?.data as AuthResponseDTO
     saveBearerToken(res.access_token)
+    saveGlobal({
+      email: res.email,
+      name: res.name,
+      role: res.role,
+      hasLoggedIn: true,
+    })
     return true
   } catch (e) {
     return false
   }
+}
+
+function signout() {
+  saveBearerToken("")
+  saveGlobal({
+    email: "",
+    name: "",
+    role: undefined,
+    hasLoggedIn: false,
+  })
 }
 
 async function whoami() {
@@ -31,5 +48,6 @@ async function whoami() {
 
 export default {
   signin,
+  signout,
   whoami,
 }

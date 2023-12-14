@@ -3,10 +3,13 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getGlobal } from 'app/_api/global';
+import _api from 'app/_api';
 
 export default function Header() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasLoggedIn, setHasLoggedIn] = useState(getGlobal().hasLoggedIn);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -54,7 +57,15 @@ export default function Header() {
             <li><Link href='/career' className={`${underlineEffect}`}>채용공고</Link></li>
             <li><Link href='/contact' className={`${underlineEffect}`}>Contact Us</Link></li>
             <li><Link href='/search' className={`${underlineEffect}`}>{searchIcon}</Link></li>
-            <li><Link href='/login' className={`${underlineEffect}`}>로그인</Link></li>
+            {
+              hasLoggedIn ?
+              <li><Link href='/' onClick={() => {
+                _api.auth.signout();
+                setHasLoggedIn(false)
+              }} className={`${underlineEffect}`}>로그아웃</Link></li>
+              :
+              <li><Link href='/login' className={`${underlineEffect}`}>로그인</Link></li>
+            }
           </ul>
         </div>
       </nav>

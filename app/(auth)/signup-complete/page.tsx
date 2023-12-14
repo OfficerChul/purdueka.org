@@ -12,9 +12,6 @@ export default function Page() {
                 <Link href={"/"} className='border-2 border-boilermaker-gold relative top-10 w-full cursor-pointer bg-boilermaker-gold h-9 hover:bg-yellow-600 text-white p-4 rounded-lg drop-shadow-md flex justify-center items-center'>
                         확인
                 </Link>
-
-
-
             </div>
         </>
     );
