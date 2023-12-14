@@ -11,7 +11,10 @@ export default function Page() {
   const [loginFailedCount, setLoginFailedCount] = useState(0);
   const [isEyeOpen, setIsEyeOpen] = useState(false);
   
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    console.log("handle login")
     const isSucceed = await api.auth.signin({ email, password })
     if (isSucceed) {
       window.location.assign("/");
@@ -30,32 +33,34 @@ export default function Page() {
         {/* <button className='absolute top-7 right-7'>{x_mark}</button> */}
         <h1 className='text-4xl text-boilermaker-gold'>로그인</h1>
         <div className="w-full gap-3 flex flex-col justify-center text-center pt-7">
-          <div className="flex bg-gray-200 w-full rounded-lg p-1 h-10 border-boilermaker-gold border-2">
-            <input
-              type="email"
-              name="email"
-              placeholder="이메일 주소"
-              className="w-full rounded-full placeholder-black text-black bg-gray-200 focus:outline-none p-2 ps-4 truncate"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="flex bg-gray-200 w-full rounded-lg h-10 p-1 border-boilermaker-gold border-2">
-            <input
-              type={isEyeOpen ? "text" : "password"}
-              name="password"
-              placeholder="비밀번호"
-              className="w-full rounded-full placeholder-black  text-black bg-gray-200 focus:outline-none p-2 ps-4 truncate"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <div className="relative right-2 text-black flex items-center">
-              <button onClick={toggleEye} className=''>
-                {isEyeOpen ? eye : eye_slash}
-              </button>
+          <form onSubmit={e => handleLogin(e)}>
+            <div className="flex bg-gray-200 w-full rounded-lg p-1 h-10 border-boilermaker-gold border-2">
+              <input
+                type="email"
+                name="email"
+                placeholder="이메일 주소"
+                className="w-full rounded-full placeholder-black text-black bg-gray-200 focus:outline-none p-2 ps-4 truncate"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
-          </div>
-          <Button color='boilermaker-gold' onClick={() => handleLogin()} className="outline-boilermaker-gold border-2 border-boilermaker-gold w-full cursor-pointer bg-boilermaker-gold h-9 hover:bg-yellow-600 text-white p-4 rounded-lg drop-shadow-md">
-            로그인
-          </Button>
+            <div className="mt-4 flex bg-gray-200 w-full rounded-lg h-10 p-1 border-boilermaker-gold border-2">
+              <input
+                type={isEyeOpen ? "text" : "password"}
+                name="password"
+                placeholder="비밀번호"
+                className="w-full rounded-full placeholder-black  text-black bg-gray-200 focus:outline-none p-2 ps-4 truncate"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className="text-black flex items-center">
+                <button onClick={toggleEye} className=''>
+                  {isEyeOpen ? eye : eye_slash}
+                </button>
+              </div>
+            </div>
+            <Button type="submit" color='boilermaker-gold' className="mt-4 outline-boilermaker-gold border-2 border-boilermaker-gold w-full cursor-pointer bg-boilermaker-gold h-9 hover:bg-yellow-600 text-white p-4 rounded-lg drop-shadow-md">
+              로그인
+            </Button>
+          </form>
           <div className='mt-6'>
             <span>회원이 아니신가요?</span>
             <Link href="/signup" className="ml-1 text-[#2670FF]">
