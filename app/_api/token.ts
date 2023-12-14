@@ -3,5 +3,8 @@ export function saveBearerToken(token: string) {
 }
 
 export function getBearerToken(): string {
-  return localStorage.getItem("bearer") || ""
+  if (typeof localStorage !== "undefined") {
+    return localStorage.getItem("bearer") || ""
+  }
+  return ""
 }

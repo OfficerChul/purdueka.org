@@ -27,7 +27,7 @@ function signout() {
 
 function useWhoami() {
     const token = getBearerToken()
-    const fetcher = (...args) => fetch(...args, {
+    const fetcher = (url: string) => fetch(url, {
       headers: new Headers({
         Authorization: `Bearer ${token}`
       })

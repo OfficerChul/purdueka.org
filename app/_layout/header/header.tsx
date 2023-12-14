@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { data } = _api.auth.useWhoami()
+  const { data, isLoading } = _api.auth.useWhoami()
   const user = data as WhoamiResponseDTO
 
   const toggleMenu = () => {
@@ -59,9 +59,12 @@ export default function Header() {
             <li><Link href='/search' className={`${underlineEffect}`}>{searchIcon}</Link></li>
             
             {
+              isLoading ? 
+              <li><Link href='/login' className={`${underlineEffect}`}></Link></li> :
               hasLoggedIn(user) ?
               <li><Link href='/' onClick={() => {
                 _api.auth.signout();
+                location.reload();
               }} className={`${underlineEffect}`}>로그아웃</Link></li>
               :
               <li><Link href='/login' className={`${underlineEffect}`}>로그인</Link></li>
