@@ -18,6 +18,8 @@ export type EmailDupCheckResponseDTO = {
 export type AllUserDataResponseDTO = {
   users: UserDTO[];
   total: number;
+  page: number;
+  pageCount: number;
 }
 
 export type DeleteUserDataResponseDTO = {

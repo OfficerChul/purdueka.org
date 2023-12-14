@@ -26,9 +26,9 @@ async function verify(key: string) {
   await axios.get(`${endpoint}/verify/${key}`);
 }
 
-async function getAllUsers(): Promise<AllUserDataResponseDTO> {
+async function getAllUsers(page: number = 1, pageCount: number = 10): Promise<AllUserDataResponseDTO> {
   try {
-    const res = (await axios.get(`${endpoint}/all`)).data as AllUserDataResponseDTO
+    const res = (await axios.get(`${endpoint}/all`, { params: {page, pageCount}})).data as AllUserDataResponseDTO
     return res
   } catch (e) {
     throw e
