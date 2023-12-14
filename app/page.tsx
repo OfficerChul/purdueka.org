@@ -54,7 +54,7 @@ export default function Home() {
               <Miniboard baseUrl='career' title='채용/인턴쉽' data={data} />
             </h1>
             <h1 className="flex-grow">
-              <Miniboard baseUrl='announcement' title='사고팔고' data={data} />
+              <Miniboard baseUrl='fleamarket' title='사고팔고' data={data} />
             </h1>
           </div>
           <div className="flex gap-3 flex-col lg:w-70 2xl:w-[349px]">

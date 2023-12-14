@@ -4,6 +4,7 @@ import comment from './comment.api'
 import user from './user.api'
 import career from './career.api'
 import housing from './housing.api'
+import fleamarket from './fleamarket.api'
 
 export default {
   announcement,
@@ -12,4 +13,5 @@ export default {
   user,
   career,
   housing,
+  fleamarket,
 }
