@@ -26,5 +26,5 @@ async function whoami() {
 
 export default {
   signin,
-  whoami
+  whoami,
 }
