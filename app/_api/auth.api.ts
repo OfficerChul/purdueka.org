@@ -32,14 +32,17 @@ function useWhoami() {
     return useSWR('http://localhost:4000/auth/profile', fetcher)
 }
 
-function whoami(): WhoamiResponseDTO {
+function Whoami(): WhoamiResponseDTO {
   const { data } = useWhoami()
   return data
 }
+
+const whoami = Whoami
 
 export default {
   signin,
   signout,
   useWhoami,
   whoami,
+  Whoami,
 }
