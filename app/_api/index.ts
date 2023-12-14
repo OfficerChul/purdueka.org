@@ -3,6 +3,7 @@ import auth from './auth.api'
 import comment from './comment.api'
 import user from './user.api'
 import career from './career.api'
+import housing from './housing.api'
 
 export default {
   announcement,
@@ -10,4 +11,5 @@ export default {
   comment,
   user,
   career,
+  housing,
 }

@@ -9,16 +9,13 @@ import _api from 'app/_api'
 import { hasLoggedIn } from 'app/_helper/lib'
 import { UserRole } from 'app/_dto/auth.dto'
 import { ReadAllRequestDto, ReadAllResponseDto, ReadAllUnit } from 'app/_dto/readAll.dto'
+import Link from 'next/link'
 
 export default function Board(props: { baseUrl: string, title: string, data: Array<ReadAllUnit> }) {
   const { baseUrl, title, data } = props;
   const canWrite = baseUrl === "announcement" ? [UserRole.ADMIN] : [UserRole.ADMIN, UserRole.USER]
   const router = useRouter()
   const user = _api.auth.whoami()
-
-  const OnPostClick = (event: any, id: any) => {
-    router.push(`/${baseUrl}/${id}`);
-  }
 
   return (
     <div className='mt-10'>
@@ -52,8 +49,8 @@ export default function Board(props: { baseUrl: string, title: string, data: Arr
             </div>
             <div className='mt-4'>
               {
-                data.map(e => <div key={e.id} className='flex hover:underline hover:cursor-pointer' onClick={event => OnPostClick(event, e.id)}>
-                  <div className='px-2 my-1 grow'>{e.title}</div>
+                data.map(e => <div key={e.id} className='flex hover:underline'>
+                  <div className='px-2 my-1 grow'><Link href={`/${baseUrl}/${e.id}`}>{e.title}</Link></div>
                   <div className='px-2 my-1 w-28 lg:w-36 truncate'>{(new Date(e.date)).toLocaleString()}</div>
                   <div className='hidden sm:block px-2 my-1 w-20 lg:w-36'>{e.author}</div>
                   <div className='px-2 my-1 w-16 sm:w-24 lg:w-28'>{e.view}</div>
