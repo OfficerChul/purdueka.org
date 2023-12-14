@@ -5,6 +5,7 @@ import api from "app/_api/"
 import Comment from "app/_components/comment/comment"
 import { ReadOneAnnouncementResponseDto } from "app/_dto/announcement.dto"
 import { hasLoggedIn } from "app/_helper/lib"
+import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
 export default function Page({ params }: { params: { id: string } }) {
@@ -13,7 +14,15 @@ export default function Page({ params }: { params: { id: string } }) {
   const [comment, setComment] = useState("")
   const user = _api.auth.whoami()
 
-  const submitComment = () => {
+  const submitComment = async () => {
+    await _api.comment.create({
+      content: comment,
+      postId: +params.id,
+    })
+    setComment("")
+    api.announcement.getOne(params.id)
+      .then(e => setData(e))
+      .finally(() => setLoading(false))
   }
 
   useEffect(() => {
@@ -58,7 +67,7 @@ export default function Page({ params }: { params: { id: string } }) {
           {
             hasLoggedIn(user) &&
             <div >
-              <textarea onChange={e => setComment(e.target.value)} className="w-full h-24 border border-black resize-none focus:outline-none p-3" placeholder="댓글을 입력해주세요"></textarea>
+              <textarea value={comment} onChange={e => setComment(e.target.value)} className="w-full h-24 border border-black resize-none focus:outline-none p-3" placeholder="댓글을 입력해주세요"></textarea>
               <div className="flex justify-end">
                 <button onClick={submitComment} className="bg-boilermaker-gold py-2 px-4">댓글달기</button>
               </div>

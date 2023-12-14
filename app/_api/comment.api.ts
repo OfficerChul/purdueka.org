@@ -2,6 +2,7 @@ import { CreateAnnouncementRequestDto, CreateAnnouncementResponseDto, ReadOneAnn
 import axios from "axios"
 import { getBearerToken } from "./token";
 import { ReadAllRequestDto, ReadAllResponseDto } from "app/_dto/readAll.dto";
+import { CreateCommentRequestDto, CreateCommentResponseDto } from "app/_dto/comment.dto";
 
 axios.interceptors.request.use(
   config => {
@@ -21,8 +22,8 @@ async function getOne(id: string): Promise<ReadOneAnnouncementResponseDto> {
   return (await axios.get(`${endpoint}/${id}`)).data as ReadOneAnnouncementResponseDto
 }
 
-async function create(dto: CreateAnnouncementRequestDto): Promise<CreateAnnouncementResponseDto> {
-  return (await axios.post(`${endpoint}`, dto)).data as CreateAnnouncementResponseDto
+async function create(dto: CreateCommentRequestDto): Promise<CreateCommentResponseDto> {
+  return (await axios.post(`${endpoint}`, dto)).data as CreateCommentResponseDto
 }
 
 export default {
