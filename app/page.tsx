@@ -51,7 +51,7 @@ export default function Home() {
           <div className="flex flex-col flex-grow">
 
             <h1 className="flex-grow">
-              <Miniboard baseUrl='announcement' title='채용/인턴쉽' data={data} />
+              <Miniboard baseUrl='career' title='채용/인턴쉽' data={data} />
             </h1>
             <h1 className="flex-grow">
               <Miniboard baseUrl='announcement' title='사고팔고' data={data} />
