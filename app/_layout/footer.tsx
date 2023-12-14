@@ -4,54 +4,54 @@ export default function Footer(){
           <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 container mx-auto">
             <div className="p-4">
               <div className="w-full lg:w-fit mx-auto">
-                <a href="#" className="text-yellow-600">PKA</a>
+                <a href="/intro" className="text-yellow-600">PKA</a>
                 <ul className="mt-6 text-white">
-                  <li className="leading-loose"><a href="#">한인회 임원</a></li>
-                  <li className="leading-loose"><a href="#">PKA 조직도</a></li>
-                  <li className="leading-loose"><a href="#">PKA 회장단 선출</a></li>
+                  <li className="leading-loose"><a href="/intro">한인회 임원</a></li>
+                  <li className="leading-loose"><a href="/intro">PKA 조직도</a></li>
+                  <li className="leading-loose"><a href="/intro">PKA 회장단 선출</a></li>
                 </ul>
               </div>
             </div>
             <div className="p-4">
               <div className="w-full lg:w-fit mx-auto">
-                <a href="#" className="text-yellow-600">퍼듀정보</a>
+                <a href="/info" className="text-yellow-600">퍼듀정보</a>
                 <ul className="mt-6 text-white">
-                  <li className="leading-loose"><a href="#">신입생 정보</a></li>
-                  <li className="leading-loose"><a href="#">퍼듀 정착 가이드</a></li>
-                  <li className="leading-loose"><a href="#">PKA 메일링 리스트 구독하기</a></li>
-                  <li className="leading-loose"><a href="#">퍼듀 한인 동아리</a></li>
+                  <li className="leading-loose"><a href="/info">신입생 정보</a></li>
+                  <li className="leading-loose"><a href="/info">퍼듀 정착 가이드</a></li>
+                  <li className="leading-loose"><a href="/info">PKA 메일링 리스트 구독하기</a></li>
+                  <li className="leading-loose"><a href="/info">퍼듀 한인 동아리</a></li>
                 </ul>
               </div>
             </div>
             <div className="p-4">
               <div className="w-full lg:w-fit mx-auto">
-                <a href="#" className="text-yellow-600">채용 공고</a>
+                <a href="/career" className="text-yellow-600">채용 공고</a>
                 <ul className="mt-6 text-white">
-                  <li className="leading-loose"><a href="#">공고</a></li>
+                  <li className="leading-loose"><a href="/career">공고</a></li>
                 </ul>
               </div>
             </div>
             <div className="p-4">
               <div className="w-full lg:w-fit mx-auto">
-                <a href="#" className="text-yellow-600">렌트/룸메</a>
+                <a href="/#" className="text-yellow-600">렌트/룸메</a>
                 <ul className="mt-6 text-white">
-                  <li className="leading-loose"><a href="#">렌트/룸메</a></li>
-                  <li className="leading-loose"><a href="#">글쓰기</a></li>
+                  <li className="leading-loose"><a href="/#">렌트/룸메</a></li>
+                  <li className="leading-loose"><a href="/#">글쓰기</a></li>
                 </ul>
               </div>
             </div>
             <div className="p-4">
               <div className="w-full lg:w-fit mx-auto">
-                <a href="#" className="text-yellow-600">사고/팔고</a>
+                <a href="/#" className="text-yellow-600">사고/팔고</a>
                 <ul className="mt-6 text-white">
-                  <li className="leading-loose"><a href="#">사고/팔고</a></li>
-                  <li className="leading-loose"><a href="#">글쓰기</a></li>
+                  <li className="leading-loose"><a href="/#">사고/팔고</a></li>
+                  <li className="leading-loose"><a href="/#">글쓰기</a></li>
                 </ul>
               </div>
             </div>
             <div className="p-4 lg:col-span-5">
               <div className="w-fit lg:w-full lg:text-center">
-                <a href="#" className="text-yellow-600">Follow us</a>
+                <a href="/contact" className="text-yellow-600">Follow us</a>
                 <div className="flex mt-6 text-white justify-center">
                   <a href="https://www.instagram.com/pka_boilerup/" className="me-4" target="_blank">
                     {instagramIcon}
