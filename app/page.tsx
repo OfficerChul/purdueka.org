@@ -13,16 +13,30 @@ import { BoardResponseDTO } from './_dto/board.dto'
 
 export default function Home() {
   const [announcement, setAnnouncement] = useState([] as BoardResponseDTO[])
+  const [career, setCareer] = useState([] as BoardResponseDTO[])
+  const [housing, setHousing] = useState([] as BoardResponseDTO[])
+  const [fleamarket, setFleamarket] = useState([] as BoardResponseDTO[])
   const [isLoading, setLoading] = useState(true)
-  useEffect(() => { 
-    _api.announcement.getAll({ page: 1, pageCount: 10 })
-      ?.then(e => setAnnouncement(e.data.map(d => ({
-        id: d.id,
-        author: d.author,
-        title: d.title,
-        date: d.date,
-        views: d.view,
-      }))))
+  useEffect(() => {
+    Promise.all([
+      _api.announcement.getAll({ page: 1, pageCount: 10 }),
+      _api.career.getAll({ page: 1, pageCount: 10 }),
+      _api.housing.getAll({ page: 1, pageCount: 10 }),
+      _api.fleamarket.getAll({ page: 1, pageCount: 10 }),
+    ]).then(e => {
+      [ setAnnouncement, setCareer,
+        setHousing, setFleamarket].reduce((acc: ReadAllResponseDto[], cur) => {
+        cur(acc[0].data.map(d => ({
+          id: d.id,
+          author: d.author,
+          title: d.title,
+          date: d.date,
+          views: d.view,
+        })))
+        const [, ...tail] = acc
+        return tail
+      }, e)
+    })
       ?.finally(() => setLoading(false))
   }, [])
 
@@ -45,16 +59,16 @@ export default function Home() {
               <Miniboard baseUrl='announcement' title='공지사항' data={announcement} />
             </h1>
             <h1 className="flex-grow">
-              <Miniboard baseUrl='housing' title='렌트/룸메' data={data} />
+              <Miniboard baseUrl='housing' title='렌트/룸메' data={housing} />
             </h1>
           </div>
           <div className="flex flex-col flex-grow">
 
             <h1 className="flex-grow">
-              <Miniboard baseUrl='career' title='채용/인턴쉽' data={data} />
+              <Miniboard baseUrl='career' title='채용/인턴쉽' data={career} />
             </h1>
             <h1 className="flex-grow">
-              <Miniboard baseUrl='fleamarket' title='사고팔고' data={data} />
+              <Miniboard baseUrl='fleamarket' title='사고팔고' data={fleamarket} />
             </h1>
           </div>
           <div className="flex gap-3 flex-col lg:w-70 2xl:w-[349px]">
