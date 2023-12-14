@@ -1,4 +1,8 @@
-import { UserRole } from "app/_api/global";
+export enum UserRole {
+  ROOT = 'root',
+  ADMIN = 'admin',
+  USER = 'user',
+}
 
 export type AuthRequestDTO = {
   email: string;
@@ -8,6 +12,6 @@ export type AuthRequestDTO = {
 export type AuthResponseDTO = {
   email: string;
   name: string;
-  role: UserRole
+  role: UserRole;
   access_token: string;
 }

@@ -1,20 +1,20 @@
 "use client"
 
-import React, { useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { getGlobal } from 'app/_api/global';
 import _api from 'app/_api';
+import { WhoamiResponseDTO } from 'app/_dto/whoami.dto';
+import { hasLoggedIn } from 'app/_helper/lib';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Header() {
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hasLoggedIn, setHasLoggedIn] = useState(getGlobal().hasLoggedIn);
+  const { data } = _api.auth.useWhoami()
+  const user = data as WhoamiResponseDTO
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
 
   return (
     <>
@@ -57,11 +57,11 @@ export default function Header() {
             <li><Link href='/career' className={`${underlineEffect}`}>채용공고</Link></li>
             <li><Link href='/contact' className={`${underlineEffect}`}>Contact Us</Link></li>
             <li><Link href='/search' className={`${underlineEffect}`}>{searchIcon}</Link></li>
+            
             {
-              hasLoggedIn ?
+              hasLoggedIn(user) ?
               <li><Link href='/' onClick={() => {
                 _api.auth.signout();
-                setHasLoggedIn(false)
               }} className={`${underlineEffect}`}>로그아웃</Link></li>
               :
               <li><Link href='/login' className={`${underlineEffect}`}>로그인</Link></li>
