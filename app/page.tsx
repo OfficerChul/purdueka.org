@@ -2,7 +2,6 @@
 
 import Miniboard from './_components/miniboard/miniboard'
 import Image from 'next/image'
-import { data } from './_shared/tests/test_data'
 import sponsor_data from "./_shared/tests/sponsor_data"
 import PKACarousel from './_components/carousel/carousel'
 import { image_data } from './_shared/tests/image_data'
