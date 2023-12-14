@@ -72,9 +72,6 @@ export default function Header() {
           </ul>
         </div>
       </nav>
-      <pre className='mt-20'>
-        {JSON.stringify(user, null, 2)}
-      </pre>
     </>
   )
 }
