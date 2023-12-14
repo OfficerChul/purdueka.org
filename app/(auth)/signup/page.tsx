@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from 'flowbite-react';
 import { isEmailAddress, datestringToDate } from "app/_helper/lib";
 import _api from "app/_api";
+import {Majors} from "../../_shared/majors/majors"
 
 export default function Page() {
   const [isEyeOpen, setIsEyeOpen] = useState(false);
@@ -50,38 +51,58 @@ export default function Page() {
   const [expectedGradDate, setExpectedGradDate] = useState("")
   const [expectedGradDateState, setExpectedGradDateState] = useState("init")
 
-  const validateFirstname = () => {
+  const setFirstNameIfValid = (firstName: string): boolean => {
+    setFirstName(firstName);
     if (firstName.length > 0) {
       setFirstNameState("submitable")
+      return true
     } else {
       setFirstNameState("empty")
+      return false
     }
   }
-  const validateLastName = () => {
+  const setLastNameIfValid = (lastName: string): boolean => {
+    setLastName(lastName);
     if (lastName.length > 0) {
       setLastNameState("submitable")
+      return true
     } else {
       setLastNameState("empty")
+      return false
     }
   }
-  const validateMajor = () => {
+  const setMajorIfValid = (major: string): boolean => {
+    setMajor(major);
     if (major.length > 0) {
-      setMajorState("submitable")
-    } else {
+      setMajorState("submitable") 
+      return true
+    }
+    else if (major === "Please select your major...") {
+      setMajorState("invalid")
+      return false
+    }
+    else {
       setMajorState("empty")
+      return false
     }
   }
-  const validateExpectedGradDate = () => {
+  const setExpectedGradDateIfValid = (expectedGradDate: string): boolean => {
+    setExpectedGradDate(expectedGradDate);
     if (expectedGradDate.length > 0) {
       setExpectedGradDateState("submitable")
+      return true
     } else {
       setExpectedGradDateState("empty")
+      return false
     }
   }
 
   const submit = async () => {
+    
     const submitable = [emailState, passwordState, firstNameState, lastNameState, majorState, expectedGradDateState].every(e => e === "submitable")
+  
     if (submitable) {
+      
       const isSuccess = await _api.user.signup({
         email,
         password,
@@ -91,6 +112,7 @@ export default function Page() {
         expectedGradDate: datestringToDate(expectedGradDate),
       })
       if (isSuccess) {
+        console.log("회원가입 성공")
         window.location.assign("/")
       }
     }
@@ -160,8 +182,7 @@ export default function Page() {
               name="lname"
               placeholder="성"
               className="w-full rounded-full placeholder-black bg-gray-200 focus:outline-none p-2 ps-4 truncate"
-              onBlur={validateFirstname}
-              onChange={e => { setFirstName(e.target.value.trim());}}
+              onChange={(e) => { setLastNameIfValid(e.currentTarget.value.trim()) }}
             />
 
           </div>
@@ -171,22 +192,17 @@ export default function Page() {
               name="fname"
               placeholder="이름"
               className="w-full rounded-full placeholder-black bg-gray-200 focus:outline-none p-2 ps-4 truncate"
-              onBlur={validateLastName}
-              onChange={e => {setLastName(e.target.value.trim());}}
+              onChange={e => {setFirstNameIfValid(e.currentTarget.value.trim())}}
             />
 
           </div>
         </div>
 
         <div className="mt-4 flex bg-gray-200 w-full rounded-lg p-1 h-10 text-black border-boilermaker-gold border-2">
-          <input
-            type="text"
-            name="major"
-            placeholder="전공"
-            className="w-full rounded-full placeholder-black bg-gray-200 focus:outline-none p-2 ps-4 truncate"
-            onBlur={validateMajor}
-            onChange={e => {setMajor(e.target.value.trim());}}
-          />
+
+          <select value={major} onChange={e => { setMajorIfValid(e.target.value); setTimeout(() => setMajorIfValid, 0) }} className="w-full rounded-full placeholder-black bg-gray-200 focus:outline-none truncate">
+            {Majors.map((major, index) => (<option key={index} value={major}>{major}</option>))}
+          </select>
           {/* https://tailwindui.com/components/application-ui/elements/dropdowns */}
         </div>
         <div className="mt-4 w-full">
@@ -197,10 +213,11 @@ export default function Page() {
             type="date"
             name="expected graduation date"
             placeholder="졸업예정일"
-            onBlur={validateExpectedGradDate}
-            onChange={e => { setExpectedGradDate(e.target.value); }}
+            onChange={e => { setExpectedGradDateIfValid(e.target.value); }}
             className="w-full rounded-full placeholder-black bg-gray-200 focus:outline-none p-2 ps-4 truncate"
           />
+          
+
           {/* https://flowbite.com/docs/plugins/datepicker/ */}
         </div>
         <Button onClick={() => submit()} color='boilermaker-gold' className="mt-4 border-2 border-boilermaker-gold w-full cursor-pointer bg-boilermaker-gold h-9 hover:bg-yellow-600 text-white p-4 rounded-lg drop-shadow-md">
