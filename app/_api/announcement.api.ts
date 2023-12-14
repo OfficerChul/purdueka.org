@@ -1,6 +1,7 @@
 import { CreateAnnouncementRequestDto, CreateAnnouncementResponseDto, ReadOneAnnouncementResponseDto } from "app/_dto/announcement.dto"
 import axios from "axios"
 import { getBearerToken } from "./token";
+import { ReadAllRequestDto, ReadAllResponseDto } from "app/_dto/readAll.dto";
 
 axios.interceptors.request.use(
   config => {
@@ -24,7 +25,12 @@ async function createAnnouncement(dto: CreateAnnouncementRequestDto): Promise<Cr
   return (await axios.post(`${endpoint}`, dto)).data as CreateAnnouncementResponseDto
 }
 
+async function getAllAnnouncement(dto: ReadAllRequestDto): Promise<ReadAllResponseDto> {
+  return (await axios.get(`${endpoint}`, { params: dto })).data as ReadAllResponseDto
+}
+
 export default {
   getOne,
   createAnnouncement,
+  getAllAnnouncement,
 }
