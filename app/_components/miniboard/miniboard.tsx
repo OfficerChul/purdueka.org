@@ -20,7 +20,7 @@ export default function Miniboard(props: { baseUrl: string, title: string, data:
             e =>
             <div key={e.id} className='flex justify-between items-center'>
               <Link className='hover:text-stone-400' href={`/${baseUrl}/${e.id}`}>{e.title}</Link>
-              <span className='text-stone-400 text-xs'>{e.date}</span>
+              <span className='text-stone-400 text-xs'>{(new Date(e.date)).toLocaleDateString()}</span>
             </div>
           )
         }

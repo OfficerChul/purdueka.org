@@ -6,8 +6,29 @@ import { data } from './_shared/tests/test_data'
 import sponsor_data from "./_shared/tests/sponsor_data"
 import PKACarousel from './_components/carousel/carousel'
 import { image_data } from './_shared/tests/image_data'
+import { ReadAllResponseDto } from './_dto/readAll.dto'
+import { useEffect, useState } from 'react'
+import _api from './_api'
+import { BoardResponseDTO } from './_dto/board.dto'
 
 export default function Home() {
+  const [announcement, setAnnouncement] = useState([] as BoardResponseDTO[])
+  const [isLoading, setLoading] = useState(true)
+  useEffect(() => { 
+    _api.announcement.getAll({ page: 1, pageCount: 10 })
+      ?.then(e => setAnnouncement(e.data.map(d => ({
+        id: d.id,
+        author: d.author,
+        title: d.title,
+        date: d.date,
+        views: d.view,
+      }))))
+      ?.finally(() => setLoading(false))
+  }, [])
+
+  if (isLoading) return <p>Loading...</p>
+  if (!announcement) return <p>No data</p>
+
   return (
     <>
       <div className="mt-20 h-[36vw] bg-cover bg-no-repeat bg-center bg-[url('/banner-70.jpeg')]">
@@ -21,7 +42,7 @@ export default function Home() {
         <div className="flex gap-10 truncate">
           <div className="flex flex-col flex-grow">
             <h1 className="flex-grow">
-              <Miniboard baseUrl='announcement' title='공지사항' data={data} />
+              <Miniboard baseUrl='announcement' title='공지사항' data={announcement} />
             </h1>
             <h1 className="flex-grow">
               <Miniboard baseUrl='housing' title='렌트/룸메' data={data} />
@@ -67,10 +88,10 @@ export default function Home() {
             {sponsor_data.map((e: any) => e.type == 'silver' ? <Image key={e.id} className='h-10 w-auto flex-shrink-0' src={e.img} alt='logo' width='317' height='96'></Image> : null)}
           </div>
         </div>
-        <div className="container m-auto mt-14 mb-20 h-56">
+        {/* <div className="container m-auto mt-14 mb-20 h-56">
           <div className="text-2xl">Gallery</div>
           <PKACarousel image_data={image_data} />
-        </div>
+        </div> */}
       </div>
     </>
   )
