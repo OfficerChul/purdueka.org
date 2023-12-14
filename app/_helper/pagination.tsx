@@ -6,8 +6,8 @@ export const paginate = (data: BoardResponseDTO[], pageNum: number, pageSize: nu
     return data.slice(startIndex, startIndex + pageSize);
 }
 
-export const generatePageIndexArray = (pagesCount: number): Key[] => {
-    let pages: Key[] = [];
+export const generatePageIndexArray = (pagesCount: number): number[] => {
+    let pages: number[] = [];
     for (let i=1; i<=pagesCount; i++) {
         pages.push(i);
     }

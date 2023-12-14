@@ -8,45 +8,17 @@ import { paginate } from 'app/_helper/pagination'
 import _api from 'app/_api'
 import { hasLoggedIn } from 'app/_helper/lib'
 import { UserRole } from 'app/_dto/auth.dto'
-import { ReadAllRequestDto, ReadAllResponseDto } from 'app/_dto/readAll.dto'
+import { ReadAllRequestDto, ReadAllResponseDto, ReadAllUnit } from 'app/_dto/readAll.dto'
 
-function apiFactory(baseUrl: string): ((x: ReadAllRequestDto) => Promise<ReadAllResponseDto>) | ((_: any) => null) {
-  switch(baseUrl) {
-  case "announcement":
-    return _api.announcement.getAllAnnouncement
-  }
-  return (_ :any) => null
-}
-
-export default function Board(props: { baseUrl: string, title: string, data: Array<BoardResponseDTO> }) {
+export default function Board(props: { baseUrl: string, title: string, data: Array<ReadAllUnit> }) {
   const { baseUrl, title, data } = props;
   const canWrite = baseUrl === "announcement" ? [UserRole.ADMIN] : [UserRole.ADMIN, UserRole.USER]
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 10;
   const router = useRouter()
   const user = _api.auth.whoami()
-  const [isLoading, setLoading] = useState(true)
-  const [list, setList] = useState({} as ReadAllResponseDto)
-
-  useEffect(() => { 
-    apiFactory(baseUrl)({ page: currentPage, pageCount: pageSize})
-      ?.then(e => setList(e))
-      ?.finally(() => setLoading(false))
-  }, [])
-
 
   const OnPostClick = (event: any, id: any) => {
     router.push(`/${baseUrl}/${id}`);
   }
-
-  const OnPageChange = (page: number) => {
-    setCurrentPage(page);
-  }
-
-  const paginatedPosts = paginate(data, currentPage, pageSize);
-
-  if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No data</p>
 
   return (
     <div className='mt-10'>
@@ -80,7 +52,7 @@ export default function Board(props: { baseUrl: string, title: string, data: Arr
             </div>
             <div className='mt-4'>
               {
-                list.data.map(e => <div key={e.id} className='flex hover:underline hover:cursor-pointer' onClick={event => OnPostClick(event, e.id)}>
+                data.map(e => <div key={e.id} className='flex hover:underline hover:cursor-pointer' onClick={event => OnPostClick(event, e.id)}>
                   <div className='px-2 my-1 grow'>{e.title}</div>
                   <div className='px-2 my-1 w-28 lg:w-36 truncate'>{(new Date(e.date)).toLocaleString()}</div>
                   <div className='hidden sm:block px-2 my-1 w-20 lg:w-36'>{e.author}</div>
@@ -92,11 +64,6 @@ export default function Board(props: { baseUrl: string, title: string, data: Arr
           </div>
         </div>
       </div>
-      <Pagination
-        items={data.length}
-        currentPage={currentPage}
-        pageSize={pageSize}
-        OnPageChange={OnPageChange} />
     </div>
   )
 }

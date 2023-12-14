@@ -10,6 +10,7 @@ export type ReadAllUnit = {
 export type ReadAllResponseDto = {
   page: number;
   pageCount: number;
+  totalDataNumber: number;
 
   data: ReadAllUnit[];
 }
