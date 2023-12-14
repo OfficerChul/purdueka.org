@@ -6,7 +6,7 @@ const endpoint = `${baseurl}/users`
 
 async function doesEmailExist(dto: EmailDupCheckRequestDTO): Promise<boolean> {
   try {
-    const res = (await axios.get(`${endpoint}/email-dup-check`, { params: dto } )).data as EmailDupCheckResponseDTO
+    const res = (await axios.get(`${endpoint}/email-dup-check`, { params: dto })).data as EmailDupCheckResponseDTO
     return res.isDuplicated
   } catch (e) {
     return true
@@ -22,8 +22,13 @@ async function signup(dto: SignupRequestDTO): Promise<boolean> {
   }
 }
 
+async function verify(key: string) {
+  await axios.get(`${endpoint}/verify/${key}`);
+}
+
 
 export default {
   signup,
   doesEmailExist,
+  verify
 }
