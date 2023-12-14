@@ -15,11 +15,16 @@ export type ReadOneAnnouncementResponseDto = {
   id: number
   title: string
   author: string
+  authorId: number
   content: string
   comments: CommentsForAnnouncement[]
   createdAt: Date
 }
 export type CreateAnnouncementRequestDto = {
+  title: string;
+  value: string;
+}
+export type UpdateAnnouncementRequestDto = {
   title: string;
   value: string;
 }

@@ -39,7 +39,7 @@ export default function Comment(props: { id: number, authorId: number, editor: s
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
                 </svg>
               }>
-                <Dropdown.Item>수정</Dropdown.Item>
+                {/* <Dropdown.Item>수정</Dropdown.Item> */}
                 <Dropdown.Item onClick={() => handleDelete()}>삭제</Dropdown.Item>
               </Dropdown>
             </div>

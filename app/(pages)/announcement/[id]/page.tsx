@@ -1,10 +1,10 @@
 "use client"
 
 import _api from "app/_api/"
-import api from "app/_api/"
 import Comment from "app/_components/comment/comment"
 import { ReadOneAnnouncementResponseDto } from "app/_dto/announcement.dto"
 import { hasLoggedIn } from "app/_helper/lib"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
@@ -12,21 +12,33 @@ export default function Page({ params }: { params: { id: string } }) {
   const [data, setData] = useState({} as ReadOneAnnouncementResponseDto)
   const [isLoading, setLoading] = useState(true)
   const [comment, setComment] = useState("")
+  const router = useRouter()
   const user = _api.auth.whoami()
 
   const submitComment = async () => {
+    if (comment.trim().length === 0) {
+      return
+    }
     await _api.comment.create({
       content: comment,
       postId: +params.id,
     })
     setComment("")
-    api.announcement.getOne(params.id)
+    _api.announcement.getOne(params.id)
       .then(e => setData(e))
       .finally(() => setLoading(false))
   }
 
+  const handleRemove = () => {
+    const yes = confirm("정말 삭제하시겠습니까?")
+    if (yes) {
+      _api.announcement.remove(data.id)
+      router.push("/announcement")
+    }
+  }
+
   useEffect(() => {
-    api.announcement.getOne(params.id)
+    _api.announcement.getOne(params.id)
       .then(e => setData(e))
       .finally(() => setLoading(false))
   }, [])
@@ -38,16 +50,15 @@ export default function Page({ params }: { params: { id: string } }) {
     <div className="mt-10">
       <hr className="bg-boilermaker-gold w-1/3 h-2 my-4" />
       <div className="flex justify-between">
-        <div className='text-2xl'>공지사항</div>
-        <div className='flex'>
-          <div className='flex items-center border border-black text-gray-900 text-sm w-56 px-2'>
-            <input type="text" id="first_name" className="focus:outline-none w-full" placeholder="Search" />
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>
+        <div className='text-2xl'><Link href="/announcement">공지사항</Link></div>
+        {
+          hasLoggedIn(user) &&
+          data.authorId === user.id &&
+          <div className='flex'>
+            <button onClick={() => router.push(`/announcement/${params.id}/edit`)} className="bg-boilermaker-gold ms-4 py-2 px-4">수정하기</button>
+            <button onClick={() => handleRemove()} className="bg-boilermaker-gold ms-4 py-2 px-4">삭제하기</button>
           </div>
-          <button className="bg-boilermaker-gold ms-4 py-2 px-4">글쓰기</button>
-        </div>
+        }
       </div>
       <div className="p-2 mt-6">
         <div className="flex flex-col lg:flex-row justify-between">

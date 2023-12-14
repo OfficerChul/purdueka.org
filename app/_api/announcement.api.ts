@@ -1,4 +1,4 @@
-import { CreateAnnouncementRequestDto, CreateAnnouncementResponseDto, ReadOneAnnouncementResponseDto } from "app/_dto/announcement.dto"
+import { CreateAnnouncementRequestDto, CreateAnnouncementResponseDto, ReadOneAnnouncementResponseDto, UpdateAnnouncementRequestDto } from "app/_dto/announcement.dto"
 import axios from "axios"
 import { getBearerToken } from "./token";
 import { ReadAllRequestDto, ReadAllResponseDto } from "app/_dto/readAll.dto";
@@ -29,8 +29,19 @@ async function getAll(dto: ReadAllRequestDto): Promise<ReadAllResponseDto> {
   return (await axios.get(`${endpoint}`, { params: dto })).data as ReadAllResponseDto
 }
 
+async function remove(id: number) {
+  await axios.delete(`${endpoint}/${id}`)
+}
+
+async function update(id: number, dto: UpdateAnnouncementRequestDto) {
+  await axios.put(`${endpoint}/${id}`, dto)
+}
+
+
 export default {
   getOne,
   create,
   getAll,
+  update,
+  remove,
 }
