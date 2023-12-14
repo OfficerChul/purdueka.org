@@ -5,6 +5,7 @@ export type CommentsForAnnouncement = {
   id: number;
   content: string;
   author: string;
+  isReply: boolean;
   createdAt: Date;
   modifiedAt?: Date;
 }
@@ -16,4 +17,11 @@ export type ReadOneAnnouncementResponseDto = {
   content: string
   comments: CommentsForAnnouncement[]
   createdAt: Date
+}
+export type CreateAnnouncementRequestDto = {
+  title: string;
+  value: string;
+}
+export type CreateAnnouncementResponseDto = {
+  postId: number;
 }

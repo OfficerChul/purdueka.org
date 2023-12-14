@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
+import _api from "app/_api";
+import { useRouter } from "next/navigation";
 
 const ReactQuill = dynamic(
   () => import('react-quill'),
@@ -10,30 +12,20 @@ const ReactQuill = dynamic(
 )
 
 
-export default  function Page({ params }: { params: { id: string } }) {
+export default function Page() {
   const [value, setValue] = useState('');
   const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('announcement');
-  const done = () => {
-    console.log({
-      category,
+  const router = useRouter()
+  const done = async () => {
+    const { postId } = await _api.announcement.createAnnouncement({
       title,
       value,
     })
+    router.push(`/announcements/${postId}`)
   }
   return <div>
     <div>
-      <div className='text-yellow-600 text-2xl mt-4'>글쓰기</div>
-      <div className='text-yellow-600 text-2xl mt-4'>
-        <label htmlFor="catetory" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Post Category</label>
-        <select
-          onChange={e => setCategory(e.target.value)}
-          defaultValue={"announcement"} id="catetory" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option value="announcement">공지사항</option>
-          <option value="bns">사고팔고</option>
-          <option value="rnr">렌트/룸메</option>
-        </select>
-      </div>
+      <div className='text-yellow-600 text-2xl mt-4'>글쓰기 - 공지사항</div>
       <div className="mt-4">
         <label htmlFor="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Post Title</label>
         <input onChange={e => setTitle(e.target.value)} type="text" id="default-input" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></input>

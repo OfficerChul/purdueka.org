@@ -2,13 +2,10 @@ import { AuthRequestDTO, AuthResponseDTO } from "app/_dto/auth.dto"
 import axios from "axios"
 import { getBearerToken, saveBearerToken } from "./token"
 import useSWR from 'swr'
+import { WhoamiResponseDTO } from "app/_dto/whoami.dto"
 
 const baseurl = process.env.NEXT_PUBLIC_API_BASEURL
 const endpoint = `${baseurl}/auth`
-
-axios.defaults.headers['Cache-Control'] = 'no-cache'
-axios.defaults.headers['Pragma'] = 'no-cache'
-axios.defaults.headers['Expires'] = '0'
 
 async function signin(dto: AuthRequestDTO): Promise<boolean> {
   console.log(endpoint)
@@ -35,8 +32,14 @@ function useWhoami() {
     return useSWR('http://localhost:4000/auth/profile', fetcher)
 }
 
+function whoami(): WhoamiResponseDTO {
+  const { data } = useWhoami()
+  return data
+}
+
 export default {
   signin,
   signout,
   useWhoami,
+  whoami,
 }

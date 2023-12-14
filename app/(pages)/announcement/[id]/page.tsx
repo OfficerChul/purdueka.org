@@ -1,8 +1,22 @@
+"use client"
+
 import api from "app/_api/"
 import Comment from "app/_components/comment/comment"
+import { ReadOneAnnouncementResponseDto } from "app/_dto/announcement.dto"
+import { useEffect, useState } from "react"
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const res = await api.announcement.getOne(params.id)
+export default function Page({ params }: { params: { id: string } }) {
+  const [data, setData] = useState({} as ReadOneAnnouncementResponseDto)
+  const [isLoading, setLoading] = useState(true)
+
+  useEffect(() => {
+    api.announcement.getOne(params.id)
+      .then(e => setData(e))
+      .finally(() => setLoading(false))
+  }, [])
+
+  if (isLoading) return <p>Loading...</p>
+  if (!data) return <p>No data</p>
 
   return (
     <div className="mt-10">
@@ -22,33 +36,31 @@ export default async function Page({ params }: { params: { id: string } }) {
       <div className="p-2 mt-6">
         <div className="flex flex-col lg:flex-row justify-between">
           <h1 className="text-4xl text-boilermaker-gold font-medium">
-            {res.title}
+            {data.title}
           </h1>
           <div className="flex items-end">
-            <div className="pe-2">작성자<span className="ms-2 font-light">{res.author}</span></div>
-            <div className="px-2">조회수<span className="ms-2 font-light">200</span></div>
-            <div className="ps-2">댓글<span className="ms-2 font-light">{res.id}</span></div>
+            <div className="pe-2">작성자<span className="ms-2 font-light">{data.author}</span></div>
+            {/* <div className="px-2">조회수<span className="ms-2 font-light">200</span></div> */}
+            <div className="ps-2">댓글<span className="ms-2 font-light">{data.id}</span></div>
           </div>
         </div>
-        <div className="text-end text-boilermaker-gold font-medium mt-3 mb-10">{res.createdAt.toLocaleString('en-us')}</div>
-        <div dangerouslySetInnerHTML={{ __html: res.content }}>
+        <div className="text-end text-boilermaker-gold font-medium mt-3 mb-10">{(new Date(data.createdAt)).toLocaleString('ko-KR')}</div>
+        <div dangerouslySetInnerHTML={{ __html: data.content }}>
         </div>
-        <div className="mt-10 mx-20">
-          <div className="">
+        <div className="mt-10">
+          <div >
             <textarea className="w-full h-24 border border-black resize-none focus:outline-none p-3" placeholder="댓글을 입력해주세요"></textarea>
             <div className="flex justify-end">
               <button className="bg-boilermaker-gold py-2 px-4">댓글달기</button>
             </div>
           </div>
           <div>
-            <p>전체댓글수 <span>2</span></p>
+            <p>전체댓글수 <span>{data.comments.length}</span></p>
             <hr className="border-black my-4" />
             <div id="comments">
               {
-                res.comments.map(e => <Comment key={e.id} editor={e.author} date={e.createdAt.toLocaleString('en-us')} content={e.content} isLiked={false} isReply={false} />)
+                data.comments.map(e => <Comment key={e.id} editor={e.author} date={(new Date(e.createdAt)).toLocaleString('ko-KR')} content={e.content} isLiked={false} isReply={e.isReply} />)
               }
-              <Comment editor="iilhun_" date="2023/10/10" content="댓글 내용" isLiked={true} isReply={false} />
-              <Comment editor="iilhun_" date="2023/10/10" content="댓글 내용" isLiked={false} isReply={true} />
             </div>
           </div>
         </div>
