@@ -14,7 +14,7 @@ axios.interceptors.request.use(
 );
 
 const baseurl = process.env.NEXT_PUBLIC_API_BASEURL
-const endpoint = `${baseurl}/announcements`
+const endpoint = `${baseurl}/comments`
 // const endpoint = `http://localhost:4000/announcements`
 
 async function getOne(id: string): Promise<ReadOneAnnouncementResponseDto> {
@@ -25,12 +25,7 @@ async function create(dto: CreateAnnouncementRequestDto): Promise<CreateAnnounce
   return (await axios.post(`${endpoint}`, dto)).data as CreateAnnouncementResponseDto
 }
 
-async function getAll(dto: ReadAllRequestDto): Promise<ReadAllResponseDto> {
-  return (await axios.get(`${endpoint}`, { params: dto })).data as ReadAllResponseDto
-}
-
 export default {
   getOne,
   create,
-  getAll,
 }

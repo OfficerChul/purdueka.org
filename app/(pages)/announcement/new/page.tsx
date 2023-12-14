@@ -17,7 +17,7 @@ export default function Page() {
   const [title, setTitle] = useState('');
   const router = useRouter()
   const done = async () => {
-    const { postId } = await _api.announcement.createAnnouncement({
+    const { postId } = await _api.announcement.create({
       title,
       value,
     })

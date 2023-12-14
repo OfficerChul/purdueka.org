@@ -1,13 +1,20 @@
 "use client"
 
+import _api from "app/_api/"
 import api from "app/_api/"
 import Comment from "app/_components/comment/comment"
 import { ReadOneAnnouncementResponseDto } from "app/_dto/announcement.dto"
+import { hasLoggedIn } from "app/_helper/lib"
 import { useEffect, useState } from "react"
 
 export default function Page({ params }: { params: { id: string } }) {
   const [data, setData] = useState({} as ReadOneAnnouncementResponseDto)
   const [isLoading, setLoading] = useState(true)
+  const [comment, setComment] = useState("")
+  const user = _api.auth.whoami()
+
+  const submitComment = () => {
+  }
 
   useEffect(() => {
     api.announcement.getOne(params.id)
@@ -48,12 +55,15 @@ export default function Page({ params }: { params: { id: string } }) {
         <div dangerouslySetInnerHTML={{ __html: data.content }}>
         </div>
         <div className="mt-10">
-          <div >
-            <textarea className="w-full h-24 border border-black resize-none focus:outline-none p-3" placeholder="댓글을 입력해주세요"></textarea>
-            <div className="flex justify-end">
-              <button className="bg-boilermaker-gold py-2 px-4">댓글달기</button>
+          {
+            hasLoggedIn(user) &&
+            <div >
+              <textarea onChange={e => setComment(e.target.value)} className="w-full h-24 border border-black resize-none focus:outline-none p-3" placeholder="댓글을 입력해주세요"></textarea>
+              <div className="flex justify-end">
+                <button onClick={submitComment} className="bg-boilermaker-gold py-2 px-4">댓글달기</button>
+              </div>
             </div>
-          </div>
+          }
           <div>
             <p>전체댓글수 <span>{data.comments.length}</span></p>
             <hr className="border-black my-4" />

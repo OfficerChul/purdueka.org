@@ -16,7 +16,7 @@ export default function Page() {
   const currentPage = +(searchParams.get("page") || 1);
   const pageSize = 10;
   useEffect(() => { 
-    _api.announcement.getAllAnnouncement({ page: currentPage, pageCount: pageSize })
+    _api.announcement.getAll({ page: currentPage, pageCount: pageSize })
       ?.then(e => setList(e))
       ?.finally(() => setLoading(false))
   }, [currentPage])
