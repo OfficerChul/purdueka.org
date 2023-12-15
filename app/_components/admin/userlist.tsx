@@ -3,6 +3,8 @@
 import { AllUserDataResponseDTO, UserDTO } from "app/_dto/user.dto"
 import api from "app/_api/"
 import { useEffect, useState } from "react"
+import Image from 'next/image'
+import { Dropdown } from "flowbite-react"
 
 export default function UserList(props: {data: AllUserDataResponseDTO}){
     const [usersState, setUsersState] = useState<UserDTO[]>(props.data.users)
@@ -44,29 +46,11 @@ export default function UserList(props: {data: AllUserDataResponseDTO}){
         <div className="relative overflow-visible shadow-md sm:rounded-lg m-4 p-2">
             <div className="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
                 <div>
-                    <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
-                        <span className="sr-only">Action button</span>
-                        Action
-                        <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
-                        </svg>
-                    </button>
-                    <div id="dropdownAction" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                        <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
-                            <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reward</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Promote</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Activate account</a>
-                            </li>
-                        </ul>
-                        <div className="py-1">
-                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete User</a>
-                        </div>
-                    </div>
+                    <Dropdown label="Action" dismissOnClick={false}>
+                        <Dropdown.Item>Item 1</Dropdown.Item>
+                        <Dropdown.Item>Item 2</Dropdown.Item>
+                        <Dropdown.Item>Item 3</Dropdown.Item>
+                    </Dropdown>
                 </div>
                 <label htmlFor="table-search" className="sr-only">Search</label>
                 <div className="relative">
@@ -120,7 +104,7 @@ export default function UserList(props: {data: AllUserDataResponseDTO}){
                                 {user.id}
                             </td>
                             <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img className="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image" />
+                                <Image width="10" height="10" className="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image" />
                                 <div className="ps-3">
                                     <div className="text-base font-semibold">{user.firstname} {user.lastname}</div>
                                     <div className="font-normal text-gray-500">{user.email}</div>
@@ -147,25 +131,14 @@ export default function UserList(props: {data: AllUserDataResponseDTO}){
                                 }
                             </td>
                             <td className="px-6 py-4">
-                                <a href="#" type="button" data-dropdown-toggle={"Action-"+user.id} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                                <div id={"Action-"+user.id} className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                                    <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
-                                        <li>
-                                            <button className="block text-left w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">비밀번호 초기화</button>
-                                        </li>
-                                        <li>
-                                            <button className="block text-left w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Change role</button>
-                                        </li>
-                                    </ul>
+                                <Dropdown label="Edit user" dismissOnClick={true}>
+                                    <Dropdown.Item>비밀번호 초기화</Dropdown.Item>
+                                    <Dropdown.Item>Change role</Dropdown.Item>
                                     {user.deletedAt == null ?
-                                        <div className="py-1">
-                                            <button className="block text-left w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" onClick={() => deactivateUser(user.id)}>탈퇴 시키기</button>
-                                        </div> :
-                                        <div className="py-1">
-                                            <button className="block text-left w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" onClick={() => activateUser(user.id)}>탈퇴 취소</button>
-                                        </div>
+                                        <Dropdown.Item onClick={() => deactivateUser(user.id)}>탈퇴</Dropdown.Item> :
+                                        <Dropdown.Item onClick={() => activateUser(user.id)}>복구</Dropdown.Item>
                                     }
-                                </div>
+                                </Dropdown>
                             </td>
                         </tr>
                     )}

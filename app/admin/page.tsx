@@ -12,7 +12,6 @@ export default async function Page() {
                 <h1>User list</h1>
                 <UserList data={users} />
             </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
         </div>
     )
 }
